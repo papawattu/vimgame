@@ -13,6 +13,17 @@ python3 vim_motion_trainer.py
 
 Needs an interactive terminal of at least 60x20.
 
+## Play in the browser
+
+The same game runs as a static web page, deployed to GitHub Pages from `main`:
+**https://papawattu.github.io/vimgame/**. Progress is saved in your browser.
+
+To run it locally:
+
+```bash
+scripts/build-web.sh --serve   # then open http://localhost:8000
+```
+
 ## Modes
 
 - **Lessons** – eight steps, eight targets per round. Hit par on 70% of targets
@@ -61,9 +72,21 @@ Progress is stored in `~/.vim_motion_trainer_progress.json`.
 - `src/player/` – `PlayerState` (score) and `PlayerExperience` (the persistent
   XP and level shared by every mode).
 
+- `src/content/content.json` – lessons, snippets, real-world scenarios and the
+  reference card, shared by the terminal and web versions.
+- `web/` – the browser version: `engine.js` (a port of the motion engine,
+  solver and rules), `app.js` (UI), `index.html`, `style.css`.
+
 ## Tests
+
+The Python and JavaScript engines are both checked against
+`tests/shared/cases.json` (hundreds of motion, solver and parsing cases
+generated from the Python engine), so the two versions behave identically.
+After changing motion behaviour, regenerate it with
+`python3 scripts/gen_shared_cases.py`; CI fails if it's stale.
 
 ```bash
 python3 vim_motion_trainer.py --self-test
 python3 -m pytest
+node --test web/engine.test.mjs
 ```

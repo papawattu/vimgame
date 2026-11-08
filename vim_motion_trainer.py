@@ -81,81 +81,13 @@ class Lesson:
     generator: Callable[[], Challenge]
 
 
-REFERENCE = {
-    "h": "left one character",
-    "j": "down one line (remembers your column)",
-    "k": "up one line (remembers your column)",
-    "l": "right one character",
-    "w": "start of next word",
-    "b": "start of previous word",
-    "e": "end of word (always moves forward)",
-    "0": "start of line",
-    "$": "end of line (2$ = end of next line)",
-    "gg": "first line, or line N with Ngg",
-    "G": "last line, or line N with NG",
-}
+CONTENT_PATH = Path(__file__).resolve().parent / "src" / "content" / "content.json"
+CONTENT = json.loads(CONTENT_PATH.read_text(encoding="utf-8"))  # shared with the web version
 
-
-SINGLE_LINES = [
-    "calm motions build confidence",
-    "small steps become muscle memory",
-    "vim rewards precise movement",
-    "steady practice beats guessing",
-    "focus on one motion at a time",
-    "think in words not characters",
-    "every keystroke has a cost",
-    "fingers rest on the home row",
-]
-
-STACKED_LINES = [
-    ["alpha lane", "bravo lane", "charlie run", "delta path"],
-    ["north gate", "south gate", "east ridge", "west ridge"],
-    ["amber note", "bronze note", "copper note", "silver note"],
-    ["red planet", "blue comet", "green moon", "white star", "black hole"],
-]
-
-SPRINT_SNIPPETS = [
-    [
-        "def load(path):",
-        "    with open(path) as fh:",
-        "        data = json.load(fh)",
-        '    return data.get("items", [])',
-        'items = load("config.json")',
-        'print(len(items), "items loaded")',
-    ],
-    [
-        "for row in table.rows:",
-        '    if row.status == "done":',
-        "        total += row.score",
-        "    else:",
-        "        pending.append(row.id)",
-        'print(f"total={total} left={len(pending)}")',
-    ],
-    [
-        "the quick brown fox jumps over the lazy dog",
-        "pack my box with five dozen liquor jugs",
-        "how vexingly quick daft zebras jump",
-        "sphinx of black quartz, judge my vow",
-        "calm motions build lasting muscle memory",
-    ],
-    [
-        "const user = await api.fetch(id);",
-        "if (!user.active) {",
-        '  log.warn("inactive user", user.id);',
-        "  return null;",
-        "}",
-        "return { name: user.name, role: user.role };",
-    ],
-    [
-        "server:",
-        "  host: 0.0.0.0",
-        "  port: 8080",
-        "  workers: 4",
-        "logging:",
-        "  level: info",
-        "  file: /var/log/app.log",
-    ],
-]
+REFERENCE: dict[str, str] = CONTENT["reference"]
+SINGLE_LINES: list[str] = CONTENT["single_lines"]
+STACKED_LINES: list[list[str]] = CONTENT["stacked_lines"]
+SPRINT_SNIPPETS: list[list[str]] = CONTENT["sprint_snippets"]
 
 
 # --------------------------------------------------------------------------
@@ -585,27 +517,20 @@ def challenge_file_jumps() -> Challenge:
     )
 
 
+LESSON_GENERATORS: dict[str, Callable[[], Challenge]] = {
+    "left_right": challenge_left_right,
+    "up_down": challenge_up_down,
+    "word_forward": challenge_word_forward,
+    "word_back": challenge_word_back,
+    "word_end": challenge_word_end,
+    "line_edges": challenge_line_edges,
+    "counts": challenge_counts,
+    "file_jumps": challenge_file_jumps,
+}
+
 LESSONS = [
-    Lesson("left_right", "Step 1: Left and Right",
-           "Start with h and l so horizontal movement feels automatic.", ("h", "l"), challenge_left_right),
-    Lesson("up_down", "Step 2: Up and Down",
-           "Add j and k to move between lines while keeping your column.", ("h", "j", "k", "l"), challenge_up_down),
-    Lesson("word_forward", "Step 3: Next Word",
-           "Use w to stop crawling and start thinking in words.", ("h", "j", "k", "l", "w"), challenge_word_forward),
-    Lesson("word_back", "Step 4: Previous Word",
-           "Learn b so you can reposition without falling back to arrows.",
-           ("h", "j", "k", "l", "w", "b"), challenge_word_back),
-    Lesson("word_end", "Step 5: Word Ends",
-           "Add e to land exactly where edits often begin.",
-           ("h", "j", "k", "l", "w", "b", "e"), challenge_word_end),
-    Lesson("line_edges", "Step 6: Line Edges",
-           "Use 0 and $ to snap to the start or end of a line.",
-           ("h", "j", "k", "l", "w", "b", "e", "0", "$"), challenge_line_edges),
-    Lesson("counts", "Step 7: Counts",
-           "Bundle repeated motions into one command for speed.",
-           ("h", "j", "k", "l", "w", "b", "e", "0", "$"), challenge_counts),
-    Lesson("file_jumps", "Step 8: Big Jumps",
-           "Finish with gg and G so you can navigate whole files.", MOTIONS, challenge_file_jumps),
+    Lesson(item["id"], item["title"], item["description"], tuple(item["commands"]), LESSON_GENERATORS[item["id"]])
+    for item in CONTENT["lessons"]
 ]
 
 LESSON_INDEX = {lesson.lesson_id: index for index, lesson in enumerate(LESSONS)}
@@ -663,256 +588,14 @@ class Scenario:
     steps: tuple[Step, ...]
 
 
-LANGUAGES = ("HTML", "JavaScript", "CSS", "Python", "Java", "Go", "C/C++", "Shell", "YAML", "JSON")
+LANGUAGES: tuple[str, ...] = tuple(CONTENT["languages"])
 
 SCENARIOS = [
-    Scenario("html_page", "Tidy up a landing page", "HTML", [
-        "<!doctype html>",
-        '<html lang="en">',
-        "  <head>",
-        "    <title>My Page</title>",
-        "  </head>",
-        "  <body>",
-        '    <a href="/about" class="nav">About us</a>',
-        "  </body>",
-        "</html>",
-    ], (
-        Step("Fix the page title: land on `My`.", 3, "My",
-             why="Then `cit` changes everything inside the tag."),
-        Step("Change the link target: land on `about` in the href.", 6, "about",
-             why='Then `ci"` swaps the whole URL.'),
-        Step("Rename the link's class: land on `nav`.", 6, "nav",
-             why="Then `ciw` and the new class name."),
-        Step("Change the document language: land on `en`.", 1, "en",
-             why="Then `ciw` fr."),
-        Step("Jump to `html` in the closing tag.", 8, "html",
-             why="Then `gg=G` would re-indent the whole page."),
-    )),
-    Scenario("js_config", "Change the dev server config", "JavaScript", [
-        "const config = {",
-        '  host: "localhost",',
-        "  port: 3000,",
-        "  debug: false,",
-        "};",
-        "export default config;",
-    ], (
-        Step("The port is wrong. Jump to 3000.", 2, "3000",
-             why="Then `ciw` 8080 - or 5080 Ctrl-A to add to it."),
-        Step("Turn debugging on: land on `false`.", 3, "false",
-             why="Then `ciw` true."),
-        Step("Change the host: land on `localhost`.", 1, "localhost",
-             why='Then `ci"` replaces everything inside the quotes.'),
-        Step("Rename the export: land on `config` on the last line.", 5, "config",
-             why="Then `ciw` - press * first to find every use."),
-    )),
-    Scenario("js_fetch", "Harden an async fetch", "JavaScript", [
-        "async function loadUser(id) {",
-        "  const res = await fetch(`/api/users/${id}`);",
-        '  if (!res.ok) throw new Error("load failed");',
-        "  return res.json();",
-        "}",
-    ], (
-        Step("Point it at another endpoint: land on `users`.", 1, "users",
-             why="Then `ciw` and the new resource name."),
-        Step("Improve the error: land on `load` in the message.", 2, "load",
-             why='Then `ci"` rewrites the whole string.'),
-        Step("Land on the function name `loadUser`.", 0, "loadUser",
-             why="Then `*` jumps to its next use."),
-        Step("Land on `json` in the return line.", 3, "json",
-             why="Then `ciw` text if the API returns plain text."),
-    )),
-    Scenario("css_card", "Restyle a card component", "CSS", [
-        ".card {",
-        "  display: flex;",
-        "  padding: 16px 24px;",
-        "  border-radius: 8px;",
-        "  color: #333;",
-        "}",
-        ".card:hover {",
-        "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
-        "}",
-    ], (
-        Step("Tighten the padding: land on 24px.", 2, "24px",
-             why="Then `ciw` - 24px is one word, digits and unit together."),
-        Step("Change the colour: land on the # of #333.", 4, "#",
-             why="Then `cW` replaces the whole value, # included."),
-        Step("Switch the layout: land on `flex`.", 1, "flex",
-             why="Then `ciw` grid."),
-        Step("Soften the shadow: land on 0.2.", 7, "0.2",
-             why="Then `cW` replaces 0.2 in one go."),
-    )),
-    Scenario("py_typo", "Fix a typo in average()", "Python", [
-        "def average(values):",
-        "    total = 0",
-        "    for v in values:",
-        "        total += v",
-        "    return total / len(value)",
-    ], (
-        Step("A NameError points at the last line - jump there.", 4, "return",
-             why="G lands on the first non-blank, ready to read the line."),
-        Step("Land on the misspelt `value` inside len().", 4, "value",
-             why="Then `ea` would append the missing s."),
-        Step("Check the closing paren at the end of the line.", 4, ")",
-             why="Then `i` lets you type just before the paren."),
-        Step("Back to the top: land on the function name.", 0, "average",
-             why="Then `ciw` would rename it."),
-        Step("Now the loop variable `v` on line 3.", 2, "v",
-             why="Then `*` would highlight every use of v."),
-    )),
-    Scenario("py_fetch", "Tune an HTTP helper", "Python", [
-        "import requests",
-        "def fetch(url, timeout=5):",
-        "    resp = requests.get(url, timeout=timeout)",
-        "    resp.raise_for_status()",
-        "    return resp.json()",
-    ], (
-        Step("Raise the default timeout: land on the 5.", 1, "5",
-             why="Then `r9` replaces that one character."),
-        Step("Land on `raise_for_status`.", 3, "raise_for_status",
-             why="Underscores are word characters, so w treats it as one word."),
-        Step("Land on `get` in requests.get.", 2, "get",
-             why="The . is its own word - count it when you use w."),
-        Step("Go to the import on the first line.", 0, "import",
-             why="Then `o` opens a new line below for another import."),
-    )),
-    Scenario("java_greeter", "Refactor a small class", "Java", [
-        "public class Greeter {",
-        "    private final String name;",
-        "    public Greeter(String name) {",
-        "        this.name = name;",
-        "    }",
-        "    public String greet() {",
-        '        return "Hello, " + name + "!";',
-        "    }",
-        "}",
-    ], (
-        Step("Make the greeting friendlier: land on `Hello`.", 6, "Hello",
-             why='Then `ci"` rewrites the string.'),
-        Step("This field should be mutable: land on `final`.", 1, "final",
-             why="Then `dw` deletes the word and the space after it."),
-        Step("Rename the method: land on `greet`.", 5, "greet",
-             why="Then `ciw` - and remember to update its callers."),
-        Step("Go to the class name on line 1.", 0, "Greeter",
-             why="Then `ciw` renames the class - and the file name must match!"),
-    )),
-    Scenario("go_handler", "Tidy an HTTP handler", "Go", [
-        "func handle(w http.ResponseWriter, r *http.Request) {",
-        '    id := r.URL.Query().Get("id")',
-        '    if id == "" {',
-        '        http.Error(w, "missing id", 400)',
-        "        return",
-        "    }",
-        '    fmt.Fprintf(w, "hello %s", id)',
-        "}",
-    ], (
-        Step("Replace the magic number: land on 400.", 3, "400",
-             why="Then `ciw` http.StatusBadRequest."),
-        Step("Improve the error text: land on `missing`.", 3, "missing",
-             why='Then `ci"` rewrites the whole message.'),
-        Step("Rename the handler: land on `handle`.", 0, "handle",
-             why="Then `ciw` - punctuation like ( is its own word for w."),
-        Step("Check the greeting: land on `hello`.", 6, "hello",
-             why='Then `ci"` changes the greeting text.'),
-        Step("Go to the closing brace at the very end.", 7, "}",
-             why="Then `o` opens a new line below for the next function."),
-    )),
-    Scenario("c_loop", "Fix an off-by-one in C", "C/C++", [
-        "#include <stdio.h>",
-        "int main(void) {",
-        "    int total = 0;",
-        "    for (int i = 0; i < 10; i++) {",
-        "        total += i;",
-        "    }",
-        '    printf("total: %d\\n", total);',
-        "    return 0;",
-        "}",
-    ], (
-        Step("Off by one? Land on the loop bound 10.", 3, "10",
-             why="Then `ciw` 11 - or Ctrl-A to increment it."),
-        Step("Land on `stdio` in the include.", 0, "stdio",
-             why="< is punctuation, so it counts as its own word for w."),
-        Step("Change the format: land on `total` inside the quotes.", 6, "total",
-             why='Then `ci"` rewrites the whole format string.'),
-        Step("Land on the 0 in `return 0`.", 7, "0",
-             why="Then `r1` makes it return an error code."),
-    )),
-    Scenario("cpp_split", "Finish a C++ helper", "C/C++", [
-        "#include <vector>",
-        "#include <string>",
-        "std::vector<std::string> split(std::string s) {",
-        "  std::vector<std::string> out;",
-        "  // TODO: handle empty input",
-        "  return out;",
-        "}",
-    ], (
-        Step("Find the TODO and land on it.", 4, "TODO",
-             why="Then `cc` replaces the whole comment line."),
-        Step("Land on `split`, the function name.", 2, "split",
-             why="Then `ciw` to rename it."),
-        Step("Land on `out` in the return line.", 5, "out",
-             why="Then `*` highlights every use."),
-        Step("Back to the first include: land on `vector`.", 0, "vector",
-             why="# and < are punctuation, so each run of them is a word for w."),
-    )),
-    Scenario("sh_script", "Edit a shell script", "Shell", [
-        "#!/usr/bin/env bash",
-        "set -euo pipefail",
-        "NAME=${1:-world}",
-        "for i in 1 2 3; do",
-        '  echo "hello $NAME ($i)"',
-        "done",
-    ], (
-        Step("Change the default name: land on `world`.", 2, "world",
-             why="Then `ciw` and the new default."),
-        Step("Loop more times: land on the 3.", 3, "3",
-             why="Then `a 4 5` appends more values after it."),
-        Step("Land on `echo` to swap it for printf.", 4, "echo",
-             why="Then `cw` printf."),
-        Step("Check the shell options: land on the end of `pipefail`.", 1, "pipefail", at="end",
-             why="Then `a` appends another option after pipefail."),
-    )),
-    Scenario("k8s_deploy", "Scale up a Deployment", "YAML", [
-        "apiVersion: apps/v1",
-        "kind: Deployment",
-        "metadata:",
-        "  name: web",
-        "spec:",
-        "  replicas: 2",
-        "  template:",
-        "    spec:",
-        "      containers: [{image: nginx:1.25}]",
-    ], (
-        Step("Scale up: land on the replica count.", 5, "2",
-             why="Then `4` Ctrl-A bumps it from 2 to 6."),
-        Step("Bump the image tag: land on 1.25.", 8, "1.25",
-             why="Then `cW` swaps the whole tag in one go."),
-        Step("Rename the app: land on `web`.", 3, "web",
-             why="Then `ciw` and the new name."),
-        Step("Check the kind: land on the end of `Deployment`.", 1, "Deployment", at="end",
-             why="Then `ciw` StatefulSet if it needs stable storage."),
-    )),
-    Scenario("json_package", "Update a package manifest", "JSON", [
-        "{",
-        '  "name": "vimgame",',
-        '  "version": "1.2.0",',
-        '  "scripts": {',
-        '    "test": "pytest -q",',
-        '    "start": "python3 main.py"',
-        "  },",
-        '  "private": true',
-        "}",
-    ], (
-        Step("Bump the minor version: land on the 2 in 1.2.0.", 2, "2",
-             why="Then `r3` makes it 1.3.0."),
-        Step("Make the tests verbose: land on the q in -q.", 4, "q",
-             why="Then `rv` turns -q into -v."),
-        Step("Publish it: land on `true`.", 7, "true",
-             why="Then `ciw` false."),
-        Step("Rename the package: land on `vimgame`.", 1, "vimgame",
-             why='Then `ci"` replaces the whole name.'),
-        Step("Change the entry point: land on `main`.", 5, "main",
-             why="Then `ciw` app - the .py stays put."),
-    )),
+    Scenario(
+        item["id"], item["title"], item["language"], item["lines"],
+        tuple(Step(st["task"], st["line"], st["find"], st.get("at", "start"), st.get("why", "")) for st in item["steps"]),
+    )
+    for item in CONTENT["scenarios"]
 ]
 
 SCENARIO_INDEX = {scenario.scenario_id: scenario for scenario in SCENARIOS}
