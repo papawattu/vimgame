@@ -1,28 +1,31 @@
 from __future__ import annotations
-from dataclasses import dataclass
+
+from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
+
 from src.player.state import PlayerState
 from src.player.exp import PlayerExperience
 
-
 from src.core.progression import ProgressionLogic
-
 from src.core.config import load_config
 from src.core.exceptions import GameOver, GameWon
 
 
 class BaseGameConfig:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
+
 class GameConfig(BaseGameConfig):
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
+    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
         super().__init__()
-        self.base_difficulty = config.get('base_difficulty', 'beginner') if config else 'beginner'
-        self.max_difficulty = config.get('max_difficulty', 'expert') if config else 'expert'
+        self.base_difficulty = (
+            config.get("base_difficulty", "beginner") if config else "beginner"
+        )
+        self.max_difficulty = (
+            config.get("max_difficulty", "expert") if config else "expert"
+        )
 
-
-from dataclasses import field
 
 @dataclass
 class GameState:
@@ -31,52 +34,55 @@ class GameState:
 
 
 class BaseGameEngine:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
+
 class GameEngine(BaseGameEngine):
-    def initialize(self, player_state: PlayerState, player_exp: PlayerExperience, config: GameConfig = GameConfig()) -> None:
+    def __init__(
+        self,
+        player_state: PlayerState,
+        player_exp: PlayerExperience,
+        config: Optional[GameConfig] = None,
+    ) -> None:
         super().__init__()
         self.player_state = player_state
         self.player_exp = player_exp
-        self.config = config
-        self.progression = ProgressionLogic(config.base_difficulty, config.max_difficulty)
+        if config:
+            self.config = config
+        else:
+            self.config = GameConfig({'base_difficulty': '1', 'max_difficulty': '5'})
+        self.progression = ProgressionLogic(
+            self.config.base_difficulty, self.config.max_difficulty
+        )
         self.state = GameState()
-    def __init__(self, player_state: PlayerState, player_exp: PlayerExperience, motions: List[Any]):
-        self.player_state = player_state
-        self.player_exp = player_exp
-        self.motions = motions
-        self.current_level = 0
-        self.sequence: List[Any] = []
 
     def generate_sequence(self, progress: float) -> List[Any]:
-        # Generate sequence based on current difficulty level
         sequence_length = 3 + int(progress * 2)
         return [f"motion_{i}" for i in range(sequence_length)]
 
     def handle_input(self, input: str) -> bool:
-        # Check if the input matches the current sequence
-        if not self.sequence:
+        if not self.state.sequence:
             return False
-        if input == str(self.sequence[0]):
-            self.sequence.pop(0)
+        if input == str(self.state.sequence[0]):
+            self.state.sequence.pop(0)
             self.player_state.update_score(10)
             self.player_exp.add_experience(5)
+            self.player_exp.update_player_level()
             return True
         else:
             self.player_state.update_score(-5)
             return False
 
     def update_game_state(self, input: str) -> None:
-        if input == 'invalid':
+        if input == "invalid":
             self.player_state.update_score(-10)
             self.player_exp.add_experience(-2)
         else:
             if self.handle_input(input):
-                self.current_level += 1
-                self.sequence = self.generate_sequence(self.current_level)
-            else:
-                self._check_game_over()
+                self.state.current_level += 1
+                self.state.sequence = self.generate_sequence(self.state.current_level)
+        self._check_game_over()
 
     def _check_game_over(self) -> None:
         if self.player_state.score <= 0:
@@ -85,15 +91,11 @@ class GameEngine(BaseGameEngine):
             raise GameWon("Congratulations! You've reached level 10 and won the game!")
 
     def track_performance(self, time: float, accuracy: float) -> float:
-        # Calculate performance based on time and accuracy
         performance = (1.0 - time / 10.0) * accuracy
         self.player_state.update_accuracy(performance)
-        
-        # Update progression logic
-        result = self.progression.update_progress({
-            'time': time,
-            'accuracy': accuracy,
-            'performance': performance
-        })
-        
+
+        self.progression.update_progress(
+            {"time": time, "accuracy": accuracy, "performance": performance}
+        )
+
         return performance
