@@ -175,3 +175,57 @@ def test_quick_learn_only_picks_unlocked_and_favours_weak_lessons():
     picks = [pick_quick_lesson(progress, random.Random(seed)).lesson_id for seed in range(300)]
     assert set(picks) <= {"left_right", "up_down"}
     assert picks.count("up_down") > picks.count("left_right") * 3
+
+
+# ---- real-world scenarios and coach ---------------------------------------
+
+from vim_motion_trainer import (  # noqa: E402
+    LANGUAGES,
+    SCENARIOS,
+    coach_plan,
+    explain_command,
+    scenario_start,
+    step_target,
+)
+
+
+def test_every_requested_language_has_a_scenario():
+    assert set(LANGUAGES) == {
+        "HTML", "JavaScript", "CSS", "Python", "Java", "Go", "C/C++", "Shell", "YAML", "JSON",
+    }
+    assert {sc.language for sc in SCENARIOS} == set(LANGUAGES)
+    assert len({sc.scenario_id for sc in SCENARIOS}) == len(SCENARIOS)
+
+
+@pytest.mark.parametrize("scenario", SCENARIOS, ids=lambda sc: sc.scenario_id)
+def test_scenario_fits_screen_and_every_step_is_reachable(scenario):
+    assert len(scenario.lines) <= 9
+    assert max(len(line) for line in scenario.lines) <= 54
+    cursor = Cursor.at(scenario_start(scenario.lines))
+    for step in scenario.steps:
+        target = step_target(scenario.lines, step)
+        assert scenario.lines[target.line][target.col] == step.find[0 if step.at == "start" else -1]
+        assert target != cursor.pos, step.task
+        assert step.why
+        # Following the coach from here must land exactly on the target.
+        plan = coach_plan(scenario.lines, cursor, target, MOTIONS)
+        assert plan
+        assert execute_motion(scenario.lines, cursor.pos, " ".join(plan)) == target
+        cursor = Cursor.at(target)
+
+
+def test_coach_replans_from_current_cursor_including_remembered_column():
+    lines = ["a long line here", "ab", "another long line"]
+    # After moving down onto the short line, j/k still remember column 10.
+    remembered = Cursor(Position(1, 1), 10)
+    assert coach_plan(lines, remembered, Position(2, 10), ("j", "k", "h", "l")) == ["j"]
+    fresh = Cursor.at(Position(1, 1))
+    assert coach_plan(lines, fresh, Position(2, 10), ("j", "k", "h", "l")) == ["j", "9l"]
+
+
+def test_explain_command():
+    assert explain_command("l") == "right 1 character"
+    assert explain_command("3w") == "forward 3 words"
+    assert explain_command("4$") == "to the end of the line 3 down"
+    assert explain_command("gg") == "to the first line"
+    assert explain_command("12G") == "to line 12"

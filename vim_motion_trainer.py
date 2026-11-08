@@ -28,7 +28,7 @@ SPRINT_SECONDS = 60
 QUICK_LEARN_SECONDS = 120
 UNLOCK_ATTEMPTS = 5
 UNLOCK_EFFICIENCY = 0.7
-MIN_HEIGHT, MIN_WIDTH = 18, 60
+MIN_HEIGHT, MIN_WIDTH = 20, 60
 
 MOTIONS = ("h", "j", "k", "l", "w", "b", "e", "0", "$", "gg", "G")
 WANT_EOL = 10**9  # "desired column" after $: stick to end of line on j/k
@@ -635,6 +635,322 @@ def pick_quick_lesson(progress: dict, rng: random.Random | None = None) -> Lesso
     return rng.choices(unlocked, weights=weights, k=1)[0]
 
 
+# --------------------------------------------------------------------------
+# Real-world coding scenarios and the coach
+# --------------------------------------------------------------------------
+
+
+@dataclass(frozen=True)
+class Step:
+    task: str  # what you're trying to do, in editing terms
+    line: int  # 0-based line of the target
+    find: str  # text on that line to land on
+    at: str = "start"  # "start" or "end" of `find`
+    why: str = ""  # what you'd do next in a real edit
+
+
+@dataclass(frozen=True)
+class Scenario:
+    scenario_id: str
+    title: str
+    language: str
+    lines: list[str]
+    steps: tuple[Step, ...]
+
+
+LANGUAGES = ("HTML", "JavaScript", "CSS", "Python", "Java", "Go", "C/C++", "Shell", "YAML", "JSON")
+
+SCENARIOS = [
+    Scenario("html_page", "Tidy up a landing page", "HTML", [
+        "<!doctype html>",
+        '<html lang="en">',
+        "  <head>",
+        "    <title>My Page</title>",
+        "  </head>",
+        "  <body>",
+        '    <a href="/about" class="nav">About us</a>',
+        "  </body>",
+        "</html>",
+    ], (
+        Step("Fix the page title: land on `My`.", 3, "My",
+             why="Then `cit` changes everything inside the tag."),
+        Step("Change the link target: land on `about` in the href.", 6, "about",
+             why='Then `ci"` swaps the whole URL.'),
+        Step("Rename the link's class: land on `nav`.", 6, "nav",
+             why="Then `ciw` and the new class name."),
+        Step("Change the document language: land on `en`.", 1, "en",
+             why="Then `ciw` fr."),
+        Step("Jump to `html` in the closing tag.", 8, "html",
+             why="Then `gg=G` would re-indent the whole page."),
+    )),
+    Scenario("js_config", "Change the dev server config", "JavaScript", [
+        "const config = {",
+        '  host: "localhost",',
+        "  port: 3000,",
+        "  debug: false,",
+        "};",
+        "export default config;",
+    ], (
+        Step("The port is wrong. Jump to 3000.", 2, "3000",
+             why="Then `ciw` 8080 - or 5080 Ctrl-A to add to it."),
+        Step("Turn debugging on: land on `false`.", 3, "false",
+             why="Then `ciw` true."),
+        Step("Change the host: land on `localhost`.", 1, "localhost",
+             why='Then `ci"` replaces everything inside the quotes.'),
+        Step("Rename the export: land on `config` on the last line.", 5, "config",
+             why="Then `ciw` - press * first to find every use."),
+    )),
+    Scenario("js_fetch", "Harden an async fetch", "JavaScript", [
+        "async function loadUser(id) {",
+        "  const res = await fetch(`/api/users/${id}`);",
+        '  if (!res.ok) throw new Error("load failed");',
+        "  return res.json();",
+        "}",
+    ], (
+        Step("Point it at another endpoint: land on `users`.", 1, "users",
+             why="Then `ciw` and the new resource name."),
+        Step("Improve the error: land on `load` in the message.", 2, "load",
+             why='Then `ci"` rewrites the whole string.'),
+        Step("Land on the function name `loadUser`.", 0, "loadUser",
+             why="Then `*` jumps to its next use."),
+        Step("Land on `json` in the return line.", 3, "json",
+             why="Then `ciw` text if the API returns plain text."),
+    )),
+    Scenario("css_card", "Restyle a card component", "CSS", [
+        ".card {",
+        "  display: flex;",
+        "  padding: 16px 24px;",
+        "  border-radius: 8px;",
+        "  color: #333;",
+        "}",
+        ".card:hover {",
+        "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+        "}",
+    ], (
+        Step("Tighten the padding: land on 24px.", 2, "24px",
+             why="Then `ciw` - 24px is one word, digits and unit together."),
+        Step("Change the colour: land on the # of #333.", 4, "#",
+             why="Then `cW` replaces the whole value, # included."),
+        Step("Switch the layout: land on `flex`.", 1, "flex",
+             why="Then `ciw` grid."),
+        Step("Soften the shadow: land on 0.2.", 7, "0.2",
+             why="Then `cW` replaces 0.2 in one go."),
+    )),
+    Scenario("py_typo", "Fix a typo in average()", "Python", [
+        "def average(values):",
+        "    total = 0",
+        "    for v in values:",
+        "        total += v",
+        "    return total / len(value)",
+    ], (
+        Step("A NameError points at the last line - jump there.", 4, "return",
+             why="G lands on the first non-blank, ready to read the line."),
+        Step("Land on the misspelt `value` inside len().", 4, "value",
+             why="Then `ea` would append the missing s."),
+        Step("Check the closing paren at the end of the line.", 4, ")",
+             why="Then `i` lets you type just before the paren."),
+        Step("Back to the top: land on the function name.", 0, "average",
+             why="Then `ciw` would rename it."),
+        Step("Now the loop variable `v` on line 3.", 2, "v",
+             why="Then `*` would highlight every use of v."),
+    )),
+    Scenario("py_fetch", "Tune an HTTP helper", "Python", [
+        "import requests",
+        "def fetch(url, timeout=5):",
+        "    resp = requests.get(url, timeout=timeout)",
+        "    resp.raise_for_status()",
+        "    return resp.json()",
+    ], (
+        Step("Raise the default timeout: land on the 5.", 1, "5",
+             why="Then `r9` replaces that one character."),
+        Step("Land on `raise_for_status`.", 3, "raise_for_status",
+             why="Underscores are word characters, so w treats it as one word."),
+        Step("Land on `get` in requests.get.", 2, "get",
+             why="The . is its own word - count it when you use w."),
+        Step("Go to the import on the first line.", 0, "import",
+             why="Then `o` opens a new line below for another import."),
+    )),
+    Scenario("java_greeter", "Refactor a small class", "Java", [
+        "public class Greeter {",
+        "    private final String name;",
+        "    public Greeter(String name) {",
+        "        this.name = name;",
+        "    }",
+        "    public String greet() {",
+        '        return "Hello, " + name + "!";',
+        "    }",
+        "}",
+    ], (
+        Step("Make the greeting friendlier: land on `Hello`.", 6, "Hello",
+             why='Then `ci"` rewrites the string.'),
+        Step("This field should be mutable: land on `final`.", 1, "final",
+             why="Then `dw` deletes the word and the space after it."),
+        Step("Rename the method: land on `greet`.", 5, "greet",
+             why="Then `ciw` - and remember to update its callers."),
+        Step("Go to the class name on line 1.", 0, "Greeter",
+             why="Then `ciw` renames the class - and the file name must match!"),
+    )),
+    Scenario("go_handler", "Tidy an HTTP handler", "Go", [
+        "func handle(w http.ResponseWriter, r *http.Request) {",
+        '    id := r.URL.Query().Get("id")',
+        '    if id == "" {',
+        '        http.Error(w, "missing id", 400)',
+        "        return",
+        "    }",
+        '    fmt.Fprintf(w, "hello %s", id)',
+        "}",
+    ], (
+        Step("Replace the magic number: land on 400.", 3, "400",
+             why="Then `ciw` http.StatusBadRequest."),
+        Step("Improve the error text: land on `missing`.", 3, "missing",
+             why='Then `ci"` rewrites the whole message.'),
+        Step("Rename the handler: land on `handle`.", 0, "handle",
+             why="Then `ciw` - punctuation like ( is its own word for w."),
+        Step("Check the greeting: land on `hello`.", 6, "hello",
+             why='Then `ci"` changes the greeting text.'),
+        Step("Go to the closing brace at the very end.", 7, "}",
+             why="Then `o` opens a new line below for the next function."),
+    )),
+    Scenario("c_loop", "Fix an off-by-one in C", "C/C++", [
+        "#include <stdio.h>",
+        "int main(void) {",
+        "    int total = 0;",
+        "    for (int i = 0; i < 10; i++) {",
+        "        total += i;",
+        "    }",
+        '    printf("total: %d\\n", total);',
+        "    return 0;",
+        "}",
+    ], (
+        Step("Off by one? Land on the loop bound 10.", 3, "10",
+             why="Then `ciw` 11 - or Ctrl-A to increment it."),
+        Step("Land on `stdio` in the include.", 0, "stdio",
+             why="< is punctuation, so it counts as its own word for w."),
+        Step("Change the format: land on `total` inside the quotes.", 6, "total",
+             why='Then `ci"` rewrites the whole format string.'),
+        Step("Land on the 0 in `return 0`.", 7, "0",
+             why="Then `r1` makes it return an error code."),
+    )),
+    Scenario("cpp_split", "Finish a C++ helper", "C/C++", [
+        "#include <vector>",
+        "#include <string>",
+        "std::vector<std::string> split(std::string s) {",
+        "  std::vector<std::string> out;",
+        "  // TODO: handle empty input",
+        "  return out;",
+        "}",
+    ], (
+        Step("Find the TODO and land on it.", 4, "TODO",
+             why="Then `cc` replaces the whole comment line."),
+        Step("Land on `split`, the function name.", 2, "split",
+             why="Then `ciw` to rename it."),
+        Step("Land on `out` in the return line.", 5, "out",
+             why="Then `*` highlights every use."),
+        Step("Back to the first include: land on `vector`.", 0, "vector",
+             why="# and < are punctuation, so each run of them is a word for w."),
+    )),
+    Scenario("sh_script", "Edit a shell script", "Shell", [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        "NAME=${1:-world}",
+        "for i in 1 2 3; do",
+        '  echo "hello $NAME ($i)"',
+        "done",
+    ], (
+        Step("Change the default name: land on `world`.", 2, "world",
+             why="Then `ciw` and the new default."),
+        Step("Loop more times: land on the 3.", 3, "3",
+             why="Then `a 4 5` appends more values after it."),
+        Step("Land on `echo` to swap it for printf.", 4, "echo",
+             why="Then `cw` printf."),
+        Step("Check the shell options: land on the end of `pipefail`.", 1, "pipefail", at="end",
+             why="Then `a` appends another option after pipefail."),
+    )),
+    Scenario("k8s_deploy", "Scale up a Deployment", "YAML", [
+        "apiVersion: apps/v1",
+        "kind: Deployment",
+        "metadata:",
+        "  name: web",
+        "spec:",
+        "  replicas: 2",
+        "  template:",
+        "    spec:",
+        "      containers: [{image: nginx:1.25}]",
+    ], (
+        Step("Scale up: land on the replica count.", 5, "2",
+             why="Then `4` Ctrl-A bumps it from 2 to 6."),
+        Step("Bump the image tag: land on 1.25.", 8, "1.25",
+             why="Then `cW` swaps the whole tag in one go."),
+        Step("Rename the app: land on `web`.", 3, "web",
+             why="Then `ciw` and the new name."),
+        Step("Check the kind: land on the end of `Deployment`.", 1, "Deployment", at="end",
+             why="Then `ciw` StatefulSet if it needs stable storage."),
+    )),
+    Scenario("json_package", "Update a package manifest", "JSON", [
+        "{",
+        '  "name": "vimgame",',
+        '  "version": "1.2.0",',
+        '  "scripts": {',
+        '    "test": "pytest -q",',
+        '    "start": "python3 main.py"',
+        "  },",
+        '  "private": true',
+        "}",
+    ], (
+        Step("Bump the minor version: land on the 2 in 1.2.0.", 2, "2",
+             why="Then `r3` makes it 1.3.0."),
+        Step("Make the tests verbose: land on the q in -q.", 4, "q",
+             why="Then `rv` turns -q into -v."),
+        Step("Publish it: land on `true`.", 7, "true",
+             why="Then `ciw` false."),
+        Step("Rename the package: land on `vimgame`.", 1, "vimgame",
+             why='Then `ci"` replaces the whole name.'),
+        Step("Change the entry point: land on `main`.", 5, "main",
+             why="Then `ciw` app - the .py stays put."),
+    )),
+]
+
+SCENARIO_INDEX = {scenario.scenario_id: scenario for scenario in SCENARIOS}
+
+
+def step_target(lines: list[str], step: Step) -> Position:
+    col = lines[step.line].index(step.find)
+    if step.at == "end":
+        col += len(step.find) - 1
+    return Position(step.line, col)
+
+
+def scenario_start(lines: list[str]) -> Position:
+    return Position(0, first_non_blank(lines, 0))
+
+
+def coach_plan(lines: list[str], cursor: Cursor, target: Position, allowed) -> list[str]:
+    """The optimal commands from wherever the cursor is right now."""
+    found = solve(lines, cursor, allowed).get(target)
+    return found[1].split() if found else []
+
+
+def explain_command(label: str) -> str:
+    """Describe a single command like `3w` or `2G` in plain English."""
+    ((count, motion),) = parse_command(label)
+    n = count or 1
+    plural = "" if n == 1 else "s"
+    phrases = {
+        "h": f"left {n} character{plural}",
+        "l": f"right {n} character{plural}",
+        "j": f"down {n} line{plural}",
+        "k": f"up {n} line{plural}",
+        "w": f"forward {n} word{plural}",
+        "b": f"back {n} word{plural}",
+        "e": "to the end of the word" if n == 1 else f"to the end of the word {n - 1} ahead",
+        "0": "to the start of the line",
+        "$": "to the end of the line" if n == 1 else f"to the end of the line {n - 1} down",
+        "gg": "to the first line" if count is None else f"to line {count}",
+        "G": "to the last line" if count is None else f"to line {count}",
+    }
+    return phrases[motion]
+
+
 def sprint_motions(progress: dict) -> tuple[str, ...]:
     unlocked = [lesson for lesson in LESSONS if lesson.lesson_id in progress["unlocked_lessons"]]
     return unlocked[-1].commands if unlocked else LESSONS[0].commands
@@ -674,6 +990,7 @@ def default_progress() -> dict:
         "overall": empty_lesson_stats(),
         "lessons": {lesson.lesson_id: empty_lesson_stats() for lesson in LESSONS},
         "sprint_best": 0,
+        "scenarios": {},  # scenario_id -> best stars
     }
 
 
@@ -691,6 +1008,9 @@ def load_progress() -> dict:
     unlocked = [lid for lid in data.get("unlocked_lessons", []) if lid in LESSON_INDEX]
     progress["unlocked_lessons"] = list(dict.fromkeys([LESSONS[0].lesson_id, *unlocked]))
     progress["sprint_best"] = int(data.get("sprint_best", 0))
+    progress["scenarios"] = {
+        sid: int(best) for sid, best in data.get("scenarios", {}).items() if sid in SCENARIO_INDEX
+    }
 
     overall = data.get("overall", {})
     for key in progress["overall"]:
@@ -775,6 +1095,8 @@ class PlayResult:
     keys: int = 0
     elapsed: float = 0.0
     commands: list[str] = field(default_factory=list)
+    coached: bool = False  # the coach was showing when a motion was made
+    coach_on: bool = False  # coach state when the target was reached (carried to the next one)
 
 
 class Screen:
@@ -947,6 +1269,7 @@ class App:
                     ("c", f"Continue      {current.title}"),
                     ("o", "Choose lesson"),
                     ("t", f"Quick learn   {QUICK_LEARN_SECONDS // 60} minutes on your weak spots"),
+                    ("w", "Real-world    edit real code with a coach"),
                     ("s", f"Sprint        {SPRINT_SECONDS}s time attack"),
                     ("p", "Progress"),
                     ("r", "Motion reference"),
@@ -961,6 +1284,8 @@ class App:
                 self.choose_lesson()
             elif choice == "t":
                 self.quick_learn()
+            elif choice == "w":
+                self.real_world()
             elif choice == "s":
                 self.sprint()
             elif choice == "p":
@@ -1019,8 +1344,13 @@ class App:
         message: tuple[str, str] = ("", 0),
         deadline: float | None = None,
         tip: str | None = None,
+        coach: bool | None = None,
     ) -> PlayResult:
+        """Play one target. `coach`: None = no coach; False/True = available, starting off/on (toggle with c)."""
         buffer = KeyBuffer()
+        coach_on = bool(coach)
+        plan_for: Cursor | None = None
+        plan: list[str] = []
         result = PlayResult("hit", cursor)
         started = time.monotonic()
         text = "\n".join(lines)
@@ -1043,9 +1373,14 @@ class App:
                 if buffer.pending:
                     self.ui.put(bottom + 4, 2, f"pending: {buffer.pending}", "warn")
                 self.ui.put(bottom + 5, 2, msg_text, msg_style)
-                if tip:
-                    self.ui.put(bottom + 7, 2, f"tip: {tip}", "accent")
-                self.ui.footer(("? hint · " if hint else "") + "esc clear pending · q quit to menu")
+                if coach_on:
+                    if plan_for != result.cursor:
+                        plan, plan_for = coach_plan(lines, result.cursor, target, allowed), result.cursor
+                    self.draw_coach(bottom + 6, plan)
+                elif tip:
+                    self.ui.put(bottom + 6, 2, f"tip: {tip}", "accent")
+                footer = ("? hint · " if hint else "") + ("c coach · " if coach is not None else "")
+                self.ui.footer(footer + "esc clear pending · q quit to menu")
                 self.ui.scr.refresh()
 
             key = self.ui.key(100 if deadline is not None else -1)
@@ -1067,6 +1402,11 @@ class App:
             if key == "?" and hint:
                 msg_text, msg_style = hint, "accent"
                 continue
+            if key == "c" and coach is not None and not buffer.pending:
+                coach_on = not coach_on
+                msg_text, msg_style = ("Coach on - follow the highlighted keys.", "accent") if coach_on \
+                    else ("Coach off - you're on your own!", "accent")
+                continue
             try:
                 token = buffer.feed(key)
             except ValueError as error:
@@ -1079,6 +1419,7 @@ class App:
             if motion not in allowed_set:
                 msg_text, msg_style = f"{motion} isn't unlocked in this lesson yet.", "bad"
                 continue
+            result.coached |= coach_on
             result.cursor = apply_motion(lines, text, result.cursor, count, motion)
             result.keys += len(label)
             result.commands.append(label)
@@ -1087,7 +1428,19 @@ class App:
                 break
 
         result.elapsed = time.monotonic() - started
+        result.coach_on = coach_on
         return result
+
+    def draw_coach(self, y: int, plan: list[str]) -> None:
+        if not plan:
+            return
+        first = plan[0]
+        self.ui.put(y, 2, "coach: press", "accent")
+        self.ui.put(y, 15, f" {first} ", "cursor")
+        note = f"  {explain_command(first)}"
+        if len(plan) > 1:
+            note += "   then " + " ".join(plan[1:])
+        self.ui.put(y, 17 + len(first), note, "dim")
 
     def play_lesson(self, lesson_id: str) -> None:
         lesson = lesson_by_id(lesson_id)
@@ -1103,6 +1456,7 @@ class App:
             result = self.play_target(
                 lesson.title, info, challenge.lines, Cursor.at(challenge.start), challenge.target,
                 lesson.commands, par, challenge.prompt, f"{challenge.hint}  (try: {challenge.solution})",
+                coach=False,
             )
             if result.status != "hit":
                 break
@@ -1160,6 +1514,85 @@ class App:
                 continue
             return key != "q"
 
+    def real_world(self) -> None:
+        while True:
+            items = []
+            for number, language in enumerate(LANGUAGES, start=1):
+                scenarios = [sc for sc in SCENARIOS if sc.language == language]
+                done = sum(sc.scenario_id in self.progress["scenarios"] for sc in scenarios)
+                items.append((str(number), f"{language:<11} {done}/{len(scenarios)} scenarios done"))
+            choice = self.menu("Real-world code", [
+                "Short editing tasks on real code: the kind of jumps you make",
+                "before a ciw or ci\". The coach shows the best next key from",
+                "wherever you are - press c to hide it and go solo.",
+            ], items)
+            if choice is None:
+                return
+            self.choose_scenario(LANGUAGES[int(choice) - 1])
+
+    def choose_scenario(self, language: str) -> None:
+        scenarios = [sc for sc in SCENARIOS if sc.language == language]
+        while True:
+            if len(scenarios) == 1:
+                choice = "1"
+            else:
+                items = []
+                for number, sc in enumerate(scenarios, start=1):
+                    best = self.progress["scenarios"].get(sc.scenario_id)
+                    status = f"best ★ {best}/{len(sc.steps) * 3}" if best is not None else "new"
+                    items.append((str(number), f"{sc.title:<30} {status}"))
+                choice = self.menu(f"Real-world · {language}", [], items)
+                if choice is None:
+                    return
+            if not self.play_scenario(scenarios[int(choice) - 1]) or len(scenarios) == 1:
+                return
+
+    def play_scenario(self, scenario: Scenario) -> bool:
+        """Play every step of a scenario. Returns False if the player quit part-way."""
+        lines = scenario.lines
+        cursor = Cursor.at(scenario_start(lines))
+        coach_on = True
+        total, solo, pars = 0, 0, 0
+        message: tuple[str, str] = ("", 0)
+        steps = len(scenario.steps)
+        title = f"{scenario.language} · {scenario.title}"
+
+        for number, step in enumerate(scenario.steps, start=1):
+            target = step_target(lines, step)
+            par, optimal = solve(lines, cursor, MOTIONS)[target]
+            info = lambda: f"step {number}/{steps}   ★ {total}"  # noqa: E731
+            result = self.play_target(
+                title, info, lines, cursor, target, MOTIONS, par, step.task,
+                message=message, coach=coach_on,
+            )
+            if result.status != "hit":
+                return False
+            cursor, coach_on = result.cursor, result.coach_on
+            stars = rate(result.keys, par)
+            total += stars
+            solo += not result.coached
+            pars += result.keys <= par
+            verdict = "par!" if result.keys <= par else f"{result.keys} keys, par {par} ({optimal})."
+            message = (f"{stars_text(stars)} {verdict}  {step.why}", "good" if stars == 3 else "warn")
+
+        best = self.progress["scenarios"].get(scenario.scenario_id)
+        record = best is None or total > best
+        if record:
+            self.progress["scenarios"][scenario.scenario_id] = total
+            save_progress(self.progress)
+        lines_out: list[tuple[str, str | int]] = [
+            (f"{title} - done!", "accent"),
+            ("", 0),
+            (message[0], message[1]),
+            ("", 0),
+            (f"Stars       {total} / {steps * 3}" + ("   new best!" if record and best is not None else ""), "warn"),
+            (f"Par hits    {pars} / {steps}", 0),
+            (f"Solo steps  {solo} / {steps}" + ("" if solo == steps else "   (try it again with the coach off: c)"),
+             "good" if solo == steps else 0),
+        ]
+        self.notice("Scenario complete", lines_out)
+        return True
+
     def quick_learn(self) -> None:
         """A 2-minute time box: tips always on, targets drawn from your weakest unlocked lessons."""
         intro = self.notice("Quick learn", [
@@ -1187,6 +1620,7 @@ class App:
                 f"Quick learn · {lesson.title}", info, challenge.lines, Cursor.at(challenge.start),
                 challenge.target, lesson.commands, par, challenge.prompt,
                 message=message, deadline=deadline, tip=f"{challenge.hint}  (try: {challenge.solution})",
+                coach=False,
             )
             if result.status != "hit":
                 break
@@ -1318,7 +1752,7 @@ class App:
             ("", 0),
             ("Counts go first: 3l, 2w, 4j. A count before gg/G is a line number.", "dim"),
             ("w/b/e treat punctuation as its own word: foo.bar is three words.", "dim"),
-            ("Esc cancels a half-typed count or g.", "dim"),
+            ("Esc cancels a half-typed count or g. c toggles the coach where it's offered.", "dim"),
         ]
         self.notice("Motion reference", lines)
 
