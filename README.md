@@ -27,11 +27,18 @@ Needs an interactive terminal of at least 60x20.
   wherever your cursor is and explains it ("`4$` → to the end of the line 3
   down"). It recalculates after every move. Press `c` to hide it and go solo;
   it's also available, off by default, in lessons and Quick learn.
+- **Survival** – timed levels run by the `src/` game engine. Each level is a
+  sequence of targets; clear one in time for +25, time out for −15. Score 0 is
+  game over and 1000 wins. Fast, efficient moves raise the difficulty (more
+  targets per level, less time per target) and slow ones ease it off.
 - **Sprint** – a 60-second time attack on code-like buffers using every motion
   you've unlocked. Par hits build a combo multiplier, and your best score is saved.
 
 After each target you see your keys alongside the optimal solution, so you learn
 shortcuts such as `$` instead of `9l`.
+
+Every target you clear earns XP towards a player level that persists across
+sessions and is shown in the menus.
 
 ## What it teaches
 
@@ -42,6 +49,17 @@ shortcuts such as `$` instead of `9l`.
 - `gg` `G`, and `Ngg` / `NG` for line numbers
 
 Progress is stored in `~/.vim_motion_trainer_progress.json`.
+
+## Code layout
+
+- `vim_motion_trainer.py` – the game: motion engine, solver, curses UI, all modes.
+- `src/core/game_engine.py` – `GameEngine` runs Survival: the target sequence,
+  score, XP and the game-over and win conditions. The game supplies targets
+  through a `sequence_factory`.
+- `src/core/progression.py` – `ProgressionLogic` adapts Survival's difficulty
+  (targets per level, time limit) from your speed and efficiency.
+- `src/player/` – `PlayerState` (score) and `PlayerExperience` (the persistent
+  XP and level shared by every mode).
 
 ## Tests
 
