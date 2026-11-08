@@ -1,0 +1,174 @@
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --line: #2a313c;
+  --fg: #d8dee9;
+  --dim: #8590a0;
+  --accent: #5fc4d4;
+  --good: #8fd16a;
+  --warn: #f0c35a;
+  --bad: #f2777f;
+  --cursor-bg: #f0c35a;
+  --cursor-fg: #0e1116;
+  --target-bg: #3fb950;
+  --target-fg: #0e1116;
+  --sel-bg: #253041;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f7f9;
+    --panel: #ffffff;
+    --line: #d9dee5;
+    --fg: #1d232b;
+    --dim: #5f6b7a;
+    --accent: #0b7285;
+    --good: #2b8a3e;
+    --warn: #9a6700;
+    --bad: #c92a2a;
+    --cursor-bg: #f2b705;
+    --cursor-fg: #1d232b;
+    --target-bg: #2f9e44;
+    --target-fg: #ffffff;
+    --sel-bg: #e3ecf7;
+    color-scheme: light;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 var(--mono);
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading { color: var(--dim); }
+
+/* ---- frame ---------------------------------------------------------- */
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.brand { color: var(--accent); font-weight: 700; letter-spacing: 0.04em; }
+.title { flex: 1 1 16ch; min-width: 0; }
+.right { color: var(--warn); white-space: pre; font-variant-numeric: tabular-nums; }
+
+.body { flex: 1; padding: 18px 0; }
+
+.keys {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  color: var(--dim);
+  font-size: 14px;
+}
+kbd {
+  font: inherit;
+  padding: 0 5px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--fg);
+}
+
+/* ---- text styles ------------------------------------------------------ */
+
+.dim { color: var(--dim); }
+.accent { color: var(--accent); font-weight: 700; }
+.good { color: var(--good); font-weight: 700; }
+.warn { color: var(--warn); font-weight: 700; }
+.bad { color: var(--bad); font-weight: 700; }
+.lines p { margin: 0; min-height: 1.5em; white-space: pre-wrap; }
+
+/* ---- menus ------------------------------------------------------------ */
+
+.intro { margin: 0 0 16px; color: var(--dim); }
+.menu { list-style: none; margin: 0; padding: 0; max-width: 640px; }
+.menu li {
+  display: flex;
+  gap: 14px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.menu li .hot { color: var(--accent); font-weight: 700; min-width: 1ch; }
+.menu li .detail { color: var(--dim); margin-left: auto; text-align: right; }
+.menu li[aria-selected="true"] { background: var(--sel-bg); }
+.menu li:hover { background: var(--sel-bg); }
+
+/* ---- the buffer ------------------------------------------------------- */
+
+.buffer {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow-x: auto;
+  font: inherit;
+  line-height: 1.6;
+}
+.buffer .ln { color: var(--dim); user-select: none; }
+.buffer .cur { background: var(--cursor-bg); color: var(--cursor-fg); border-radius: 2px; }
+.buffer .tgt { background: var(--target-bg); color: var(--target-fg); border-radius: 2px; }
+
+.status {
+  margin-top: 14px;
+  display: grid;
+  gap: 4px;
+}
+.status .row { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; }
+.status .msg { min-height: 1.5em; }
+.coach .press {
+  display: inline-block;
+  padding: 0 6px;
+  margin: 0 4px;
+  border-radius: 4px;
+  background: var(--cursor-bg);
+  color: var(--cursor-fg);
+  font-weight: 700;
+}
+
+.notice-actions { margin-top: 18px; }
+button {
+  font: inherit;
+  color: var(--fg);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+
+.touch-note {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--dim);
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  html, body { font-size: 14px; }
+  .menu li .detail { display: none; }
+}

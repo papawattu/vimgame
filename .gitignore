@@ -9,3 +9,6 @@ dist/
 # Virtual environments
 venv/
 .venv/
+
+# Built web version
+_site/

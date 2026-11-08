@@ -6,6 +6,7 @@ setup(
     packages=find_packages(include=['src', 'src.*']),
     py_modules=['vim_motion_trainer'],
     include_package_data=True,
+    package_data={'src.content': ['content.json']},
     install_requires=[],
     entry_points={
         'console_scripts': [

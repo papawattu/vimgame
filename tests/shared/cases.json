@@ -1,0 +1,8921 @@
+{
+ "motions": [
+  {
+   "lines": [
+    "alpha beta gamma",
+    "delta epsilon zeta",
+    "eta theta iota"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "w",
+   "expect": [
+    0,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "alpha beta gamma",
+    "delta epsilon zeta",
+    "eta theta iota"
+   ],
+   "start": [
+    0,
+    9
+   ],
+   "keys": "e",
+   "expect": [
+    0,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "alpha beta gamma",
+    "delta epsilon zeta",
+    "eta theta iota"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "2w",
+   "expect": [
+    0,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "alpha beta gamma",
+    "delta epsilon zeta",
+    "eta theta iota"
+   ],
+   "start": [
+    2,
+    0
+   ],
+   "keys": "2gg",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "alpha beta gamma",
+    "delta epsilon zeta",
+    "eta theta iota"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "3G",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "foo.bar baz"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "w",
+   "expect": [
+    0,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "foo.bar baz"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "3w",
+   "expect": [
+    0,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "foo.bar baz"
+   ],
+   "start": [
+    0,
+    8
+   ],
+   "keys": "2b",
+   "expect": [
+    0,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "foo.bar baz"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "e",
+   "expect": [
+    0,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "one two",
+    "three"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "w",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "one two",
+    "three"
+   ],
+   "start": [
+    1,
+    0
+   ],
+   "keys": "w",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "a long line here",
+    "ab",
+    "another long line"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "jj",
+   "expect": [
+    2,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "short",
+    "a much longer line",
+    "mid line"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "$j",
+   "expect": [
+    1,
+    17
+   ]
+  },
+  {
+   "lines": [
+    "short",
+    "a much longer line",
+    "mid line"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "2$",
+   "expect": [
+    1,
+    17
+   ]
+  },
+  {
+   "lines": [
+    "top",
+    "    indented",
+    "  end"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "G",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "top",
+    "    indented",
+    "  end"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "2G",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "abc"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "9l",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "abc"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "9h",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "a",
+    "b"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "9j",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    7
+   ],
+   "keys": "3l5w",
+   "expect": [
+    4,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    4,
+    24
+   ],
+   "keys": "3eb3e",
+   "expect": [
+    5,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "2gg3w",
+   "expect": [
+    0,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "3k3e",
+   "expect": [
+    0,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    3,
+    21
+   ],
+   "keys": "3e",
+   "expect": [
+    3,
+    31
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    7,
+    0
+   ],
+   "keys": "3w",
+   "expect": [
+    7,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    21
+   ],
+   "keys": "3$",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    6,
+    0
+   ],
+   "keys": "5w",
+   "expect": [
+    6,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    1,
+    5
+   ],
+   "keys": "5G3jl",
+   "expect": [
+    7,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    7,
+    9
+   ],
+   "keys": "2b",
+   "expect": [
+    7,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    6,
+    1
+   ],
+   "keys": "3w5G",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "5w3ke",
+   "expect": [
+    0,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    6,
+    9
+   ],
+   "keys": "3h$",
+   "expect": [
+    6,
+    23
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    7,
+    5
+   ],
+   "keys": "3gg",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    0,
+    37
+   ],
+   "keys": "5l",
+   "expect": [
+    0,
+    42
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    1,
+    15
+   ],
+   "keys": "3gg3k",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    4,
+    12
+   ],
+   "keys": "2e",
+   "expect": [
+    4,
+    25
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    2,
+    45
+   ],
+   "keys": "5e2$",
+   "expect": [
+    4,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    1,
+    17
+   ],
+   "keys": "2lb2l",
+   "expect": [
+    1,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    3,
+    0
+   ],
+   "keys": "3bw3l",
+   "expect": [
+    2,
+    40
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "3j",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    1,
+    10
+   ],
+   "keys": "2k2w",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    3,
+    3
+   ],
+   "keys": "5Ge5gg",
+   "expect": [
+    4,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "5$",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    11
+   ],
+   "keys": "0w",
+   "expect": [
+    0,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    6,
+    5
+   ],
+   "keys": "j5l",
+   "expect": [
+    7,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    0,
+    17
+   ],
+   "keys": "3Ggg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "3w5$",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    22
+   ],
+   "keys": "5ke5k",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "2hl",
+   "expect": [
+    0,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    4,
+    4
+   ],
+   "keys": "3$2e2h",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    5,
+    15
+   ],
+   "keys": "3k3$3j",
+   "expect": [
+    5,
+    42
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    3,
+    11
+   ],
+   "keys": "h3j3j",
+   "expect": [
+    5,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "5j3gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    18
+   ],
+   "keys": "3kG$",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    0,
+    5
+   ],
+   "keys": "w",
+   "expect": [
+    0,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    1,
+    2
+   ],
+   "keys": "l3G0",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "5k3e5j",
+   "expect": [
+    0,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    3,
+    0
+   ],
+   "keys": "3b",
+   "expect": [
+    2,
+    19
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "5ggl",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "3G3$5k",
+   "expect": [
+    0,
+    25
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    2
+   ],
+   "keys": "G",
+   "expect": [
+    4,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "ggb",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    20
+   ],
+   "keys": "3b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    9
+   ],
+   "keys": "3j",
+   "expect": [
+    0,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    17
+   ],
+   "keys": "j3l2gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    4,
+    5
+   ],
+   "keys": "2wj",
+   "expect": [
+    4,
+    17
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "2h2w",
+   "expect": [
+    8,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "0h",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    23
+   ],
+   "keys": "5G5j",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    7,
+    27
+   ],
+   "keys": "3gg2ggk",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "5ek",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    5,
+    1
+   ],
+   "keys": "5$",
+   "expect": [
+    5,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    2,
+    16
+   ],
+   "keys": "3G3gg",
+   "expect": [
+    2,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "l3k",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    4,
+    7
+   ],
+   "keys": "3k2e3gg",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "3k3e5w",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    3,
+    0
+   ],
+   "keys": "2j",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    21
+   ],
+   "keys": "3h5G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    8,
+    14
+   ],
+   "keys": "5k",
+   "expect": [
+    3,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "5j3j5h",
+   "expect": [
+    0,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    1,
+    3
+   ],
+   "keys": "j",
+   "expect": [
+    2,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    2,
+    9
+   ],
+   "keys": "2e0G",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    0,
+    20
+   ],
+   "keys": "h3w0",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    2,
+    14
+   ],
+   "keys": "5weG",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    3,
+    10
+   ],
+   "keys": "bl",
+   "expect": [
+    3,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    3,
+    13
+   ],
+   "keys": "2e",
+   "expect": [
+    3,
+    21
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "3b5j",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "3b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    27
+   ],
+   "keys": "2gg2l",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "w5k2h",
+   "expect": [
+    3,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    4,
+    22
+   ],
+   "keys": "3e",
+   "expect": [
+    4,
+    39
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "bw3k",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    4,
+    21
+   ],
+   "keys": "e2e0",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    7,
+    2
+   ],
+   "keys": "2gg2gg5G",
+   "expect": [
+    4,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    3,
+    6
+   ],
+   "keys": "2kl",
+   "expect": [
+    1,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    4,
+    3
+   ],
+   "keys": "5$5b",
+   "expect": [
+    8,
+    32
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "2G3G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    16
+   ],
+   "keys": "2b",
+   "expect": [
+    0,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    5,
+    6
+   ],
+   "keys": "2j",
+   "expect": [
+    7,
+    4
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    3,
+    0
+   ],
+   "keys": "5jlG",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    8,
+    5
+   ],
+   "keys": "3w03$",
+   "expect": [
+    8,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    2,
+    26
+   ],
+   "keys": "e",
+   "expect": [
+    2,
+    29
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "5k3j",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    2,
+    11
+   ],
+   "keys": "3e",
+   "expect": [
+    2,
+    19
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    1,
+    4
+   ],
+   "keys": "j",
+   "expect": [
+    2,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    20
+   ],
+   "keys": "lb",
+   "expect": [
+    3,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    3,
+    10
+   ],
+   "keys": "jgg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "G2hl",
+   "expect": [
+    5,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    22
+   ],
+   "keys": "2e5$2j",
+   "expect": [
+    0,
+    31
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    5,
+    0
+   ],
+   "keys": "5b",
+   "expect": [
+    3,
+    33
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    4,
+    11
+   ],
+   "keys": "0",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "5w",
+   "expect": [
+    0,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    5,
+    6
+   ],
+   "keys": "2$k",
+   "expect": [
+    5,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "5w3l",
+   "expect": [
+    1,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "2$2gg3h",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "2lk2b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    11
+   ],
+   "keys": "5w2gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    6,
+    7
+   ],
+   "keys": "2b2h",
+   "expect": [
+    5,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "0",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "5ee3gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    1,
+    3
+   ],
+   "keys": "5w5l",
+   "expect": [
+    2,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    0,
+    12
+   ],
+   "keys": "5b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    22
+   ],
+   "keys": "3Gb",
+   "expect": [
+    1,
+    24
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "5G3h3gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    4,
+    6
+   ],
+   "keys": "5b2we",
+   "expect": [
+    3,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    5,
+    16
+   ],
+   "keys": "gg3$",
+   "expect": [
+    2,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    2,
+    28
+   ],
+   "keys": "3$",
+   "expect": [
+    4,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "3l3b",
+   "expect": [
+    7,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "b5e",
+   "expect": [
+    0,
+    29
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "5b2e",
+   "expect": [
+    2,
+    36
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    23
+   ],
+   "keys": "3h",
+   "expect": [
+    0,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    4,
+    15
+   ],
+   "keys": "5l",
+   "expect": [
+    4,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    2,
+    22
+   ],
+   "keys": "e",
+   "expect": [
+    2,
+    24
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    9
+   ],
+   "keys": "3b3j",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    1,
+    5
+   ],
+   "keys": "2gg0",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    27
+   ],
+   "keys": "0",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    5,
+    1
+   ],
+   "keys": "3k2$",
+   "expect": [
+    3,
+    17
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    8
+   ],
+   "keys": "k2G3w",
+   "expect": [
+    0,
+    22
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    6,
+    2
+   ],
+   "keys": "5w2k",
+   "expect": [
+    6,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "ggw",
+   "expect": [
+    0,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    3,
+    5
+   ],
+   "keys": "k",
+   "expect": [
+    2,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    21
+   ],
+   "keys": "2w0",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    6,
+    5
+   ],
+   "keys": "2G3G",
+   "expect": [
+    2,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    7,
+    0
+   ],
+   "keys": "2k",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    7,
+    6
+   ],
+   "keys": "5j",
+   "expect": [
+    8,
+    6
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    6,
+    1
+   ],
+   "keys": "2j2$",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    4,
+    1
+   ],
+   "keys": "3jjk",
+   "expect": [
+    7,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    28
+   ],
+   "keys": "h5k3G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    4,
+    2
+   ],
+   "keys": "5e",
+   "expect": [
+    4,
+    25
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    16
+   ],
+   "keys": "5l5w",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    4,
+    1
+   ],
+   "keys": "5k",
+   "expect": [
+    0,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "2gg",
+   "expect": [
+    1,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    5,
+    3
+   ],
+   "keys": "5kj$",
+   "expect": [
+    1,
+    32
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    2,
+    40
+   ],
+   "keys": "2j5b",
+   "expect": [
+    4,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    11
+   ],
+   "keys": "2$5b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    1,
+    3
+   ],
+   "keys": "5$",
+   "expect": [
+    5,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    7,
+    1
+   ],
+   "keys": "2G3k",
+   "expect": [
+    0,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    7,
+    5
+   ],
+   "keys": "b",
+   "expect": [
+    7,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    5,
+    0
+   ],
+   "keys": "0l5e",
+   "expect": [
+    6,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    0,
+    18
+   ],
+   "keys": "3b5k",
+   "expect": [
+    0,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    5,
+    11
+   ],
+   "keys": "j3be",
+   "expect": [
+    5,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    4,
+    1
+   ],
+   "keys": "2k2ek",
+   "expect": [
+    1,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    4,
+    13
+   ],
+   "keys": "$3h2h",
+   "expect": [
+    4,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    2,
+    1
+   ],
+   "keys": "3w",
+   "expect": [
+    3,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    3,
+    4
+   ],
+   "keys": "w",
+   "expect": [
+    3,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    20
+   ],
+   "keys": "e",
+   "expect": [
+    0,
+    23
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    2,
+    3
+   ],
+   "keys": "3h5b",
+   "expect": [
+    1,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    3,
+    9
+   ],
+   "keys": "3l3G",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    2,
+    9
+   ],
+   "keys": "5w5$0",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    6,
+    12
+   ],
+   "keys": "3e",
+   "expect": [
+    6,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    28
+   ],
+   "keys": "e",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    2,
+    30
+   ],
+   "keys": "3k",
+   "expect": [
+    0,
+    21
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    1,
+    6
+   ],
+   "keys": "3w",
+   "expect": [
+    1,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    3,
+    5
+   ],
+   "keys": "2lb5k",
+   "expect": [
+    0,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "5G2w",
+   "expect": [
+    0,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    3,
+    2
+   ],
+   "keys": "5w2w2e",
+   "expect": [
+    6,
+    10
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    2,
+    2
+   ],
+   "keys": "2G2be",
+   "expect": [
+    0,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    1,
+    26
+   ],
+   "keys": "3k2$5j",
+   "expect": [
+    6,
+    33
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    2,
+    0
+   ],
+   "keys": "3G5h3$",
+   "expect": [
+    4,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    1,
+    38
+   ],
+   "keys": "5k3e",
+   "expect": [
+    1,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "5l2e2l",
+   "expect": [
+    0,
+    21
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "2e2l",
+   "expect": [
+    0,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "$",
+   "expect": [
+    0,
+    29
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "5b3e3k",
+   "expect": [
+    0,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    14
+   ],
+   "keys": "5w2l",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "3G2l3w",
+   "expect": [
+    0,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    6,
+    7
+   ],
+   "keys": "3gg",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "2b2gg3gg",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    19
+   ],
+   "keys": "3b$G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    1,
+    18
+   ],
+   "keys": "2G2j",
+   "expect": [
+    3,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "w5j5w",
+   "expect": [
+    0,
+    31
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "2ll",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    1,
+    20
+   ],
+   "keys": "5$",
+   "expect": [
+    4,
+    21
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    5,
+    12
+   ],
+   "keys": "5h5w5$",
+   "expect": [
+    8,
+    38
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    3,
+    14
+   ],
+   "keys": "$5e",
+   "expect": [
+    4,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    5
+   ],
+   "keys": "gggg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    3,
+    1
+   ],
+   "keys": "2b3w5e",
+   "expect": [
+    5,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    11
+   ],
+   "keys": "2lb",
+   "expect": [
+    0,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "3k",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    3,
+    8
+   ],
+   "keys": "2b3h",
+   "expect": [
+    3,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    19
+   ],
+   "keys": "3h2ggl",
+   "expect": [
+    0,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    1,
+    5
+   ],
+   "keys": "2l5G",
+   "expect": [
+    4,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    1,
+    8
+   ],
+   "keys": "3w",
+   "expect": [
+    1,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    6,
+    7
+   ],
+   "keys": "5l",
+   "expect": [
+    6,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "j2Ge",
+   "expect": [
+    1,
+    10
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "5ggk",
+   "expect": [
+    3,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    5,
+    13
+   ],
+   "keys": "5l3gg",
+   "expect": [
+    2,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    2,
+    16
+   ],
+   "keys": "3h",
+   "expect": [
+    2,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    3,
+    3
+   ],
+   "keys": "2ek2k",
+   "expect": [
+    0,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    18
+   ],
+   "keys": "3j",
+   "expect": [
+    0,
+    18
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "3$5k5b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    18
+   ],
+   "keys": "5j",
+   "expect": [
+    4,
+    18
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    5,
+    14
+   ],
+   "keys": "j",
+   "expect": [
+    6,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    3,
+    31
+   ],
+   "keys": "02j",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "e3lb",
+   "expect": [
+    0,
+    1
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "b2G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    22
+   ],
+   "keys": "5l5gg5k",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    1,
+    14
+   ],
+   "keys": "5gg",
+   "expect": [
+    4,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    4
+   ],
+   "keys": "l2e",
+   "expect": [
+    3,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    9
+   ],
+   "keys": "l2b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    5,
+    22
+   ],
+   "keys": "5gg",
+   "expect": [
+    4,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    15
+   ],
+   "keys": "3l5Ge",
+   "expect": [
+    0,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    26
+   ],
+   "keys": "3w5ggG",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "j",
+   "expect": [
+    1,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "h",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    5,
+    1
+   ],
+   "keys": "5b",
+   "expect": [
+    3,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "2l",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    1,
+    11
+   ],
+   "keys": "5jh3e",
+   "expect": [
+    6,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    4,
+    11
+   ],
+   "keys": "3gg",
+   "expect": [
+    2,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    5,
+    13
+   ],
+   "keys": "3e2b5G",
+   "expect": [
+    4,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "0",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "3j2e2e",
+   "expect": [
+    0,
+    18
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    5,
+    2
+   ],
+   "keys": "5G5h",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    21
+   ],
+   "keys": "3l",
+   "expect": [
+    0,
+    24
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    6,
+    20
+   ],
+   "keys": "3w",
+   "expect": [
+    6,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    4,
+    1
+   ],
+   "keys": "2k3G",
+   "expect": [
+    2,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    3,
+    15
+   ],
+   "keys": "5h2gg5$",
+   "expect": [
+    5,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    2,
+    7
+   ],
+   "keys": "b",
+   "expect": [
+    2,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    6,
+    0
+   ],
+   "keys": "5e3w3G",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "5gg5G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    5,
+    4
+   ],
+   "keys": "3l",
+   "expect": [
+    5,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "2$3b",
+   "expect": [
+    0,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "3$3j",
+   "expect": [
+    0,
+    25
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    2,
+    18
+   ],
+   "keys": "3k",
+   "expect": [
+    0,
+    18
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    16
+   ],
+   "keys": "5G2ggj",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    6,
+    4
+   ],
+   "keys": "3l",
+   "expect": [
+    6,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    5,
+    13
+   ],
+   "keys": "2bwG",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    2,
+    22
+   ],
+   "keys": "k",
+   "expect": [
+    1,
+    22
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    2,
+    17
+   ],
+   "keys": "k",
+   "expect": [
+    1,
+    17
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    8
+   ],
+   "keys": "5w",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    1,
+    20
+   ],
+   "keys": "k",
+   "expect": [
+    0,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    8,
+    4
+   ],
+   "keys": "2l",
+   "expect": [
+    8,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "2j",
+   "expect": [
+    0,
+    25
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    18
+   ],
+   "keys": "5e",
+   "expect": [
+    0,
+    31
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    17
+   ],
+   "keys": "5$5$",
+   "expect": [
+    4,
+    21
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "5l",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    15
+   ],
+   "keys": "b2k5k",
+   "expect": [
+    0,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    0,
+    28
+   ],
+   "keys": "h2lG",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    5
+   ],
+   "keys": "3l3w2j",
+   "expect": [
+    0,
+    20
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "3l",
+   "expect": [
+    0,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    2,
+    7
+   ],
+   "keys": "2b3w",
+   "expect": [
+    2,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    3,
+    15
+   ],
+   "keys": "3w",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    0,
+    5
+   ],
+   "keys": "w3h",
+   "expect": [
+    0,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    4,
+    2
+   ],
+   "keys": "2e",
+   "expect": [
+    4,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "2h",
+   "expect": [
+    0,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    3,
+    7
+   ],
+   "keys": "3l3gg5k",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "3gg5e5b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "5G3k",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    4,
+    6
+   ],
+   "keys": "3b",
+   "expect": [
+    3,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    2,
+    9
+   ],
+   "keys": "5e3h5h",
+   "expect": [
+    3,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "j5b2k",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    14
+   ],
+   "keys": "3w5e0",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    1,
+    8
+   ],
+   "keys": "5b2gg2$",
+   "expect": [
+    2,
+    44
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    1,
+    20
+   ],
+   "keys": "e5h",
+   "expect": [
+    1,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    7,
+    3
+   ],
+   "keys": "5k2j",
+   "expect": [
+    4,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "$",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    1,
+    10
+   ],
+   "keys": "5le2e",
+   "expect": [
+    2,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    0,
+    15
+   ],
+   "keys": "k3k",
+   "expect": [
+    0,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    3,
+    8
+   ],
+   "keys": "5j",
+   "expect": [
+    5,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    3,
+    23
+   ],
+   "keys": "lb",
+   "expect": [
+    3,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    24
+   ],
+   "keys": "2e",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    2,
+    3
+   ],
+   "keys": "2ee",
+   "expect": [
+    3,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    1,
+    14
+   ],
+   "keys": "e",
+   "expect": [
+    1,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "3h",
+   "expect": [
+    0,
+    22
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    3,
+    8
+   ],
+   "keys": "05h2k",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    3,
+    2
+   ],
+   "keys": "k2j5k",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    1,
+    13
+   ],
+   "keys": "l",
+   "expect": [
+    1,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    3,
+    1
+   ],
+   "keys": "3bkb",
+   "expect": [
+    0,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "5h",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    1,
+    2
+   ],
+   "keys": "5$3G",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    28
+   ],
+   "keys": "5k2G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    18
+   ],
+   "keys": "5gg5gg3b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "3e2j",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    1,
+    2
+   ],
+   "keys": "3l",
+   "expect": [
+    1,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    19
+   ],
+   "keys": "2$2bgg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "2gg5G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    8,
+    5
+   ],
+   "keys": "3gg",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "5w3hl",
+   "expect": [
+    0,
+    26
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "2$5lh",
+   "expect": [
+    0,
+    24
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    22
+   ],
+   "keys": "2G2w",
+   "expect": [
+    0,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "2w",
+   "expect": [
+    0,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    20
+   ],
+   "keys": "3l",
+   "expect": [
+    0,
+    23
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    6,
+    11
+   ],
+   "keys": "5e3b5G",
+   "expect": [
+    4,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    3,
+    6
+   ],
+   "keys": "2k",
+   "expect": [
+    1,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    1,
+    11
+   ],
+   "keys": "2wj5w",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "gg3gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    3,
+    8
+   ],
+   "keys": "2gg0",
+   "expect": [
+    1,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "5gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    26
+   ],
+   "keys": "2l2gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    7,
+    5
+   ],
+   "keys": "5$",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "2j",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    3,
+    11
+   ],
+   "keys": "2w3$2w",
+   "expect": [
+    6,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    17
+   ],
+   "keys": "5b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    2,
+    7
+   ],
+   "keys": "2w",
+   "expect": [
+    2,
+    12
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    2,
+    11
+   ],
+   "keys": "5h2gg",
+   "expect": [
+    1,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "hG",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "3k2G",
+   "expect": [
+    1,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "5gg5k",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    1,
+    23
+   ],
+   "keys": "3gg2ggw",
+   "expect": [
+    1,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    4,
+    0
+   ],
+   "keys": "5h3w",
+   "expect": [
+    5,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    19
+   ],
+   "keys": "3gg3w",
+   "expect": [
+    0,
+    13
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    3,
+    15
+   ],
+   "keys": "5e2ggw",
+   "expect": [
+    1,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    21
+   ],
+   "keys": "3j",
+   "expect": [
+    0,
+    21
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    2,
+    8
+   ],
+   "keys": "l",
+   "expect": [
+    2,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "5w",
+   "expect": [
+    1,
+    10
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "2gg3w",
+   "expect": [
+    0,
+    19
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    4,
+    3
+   ],
+   "keys": "5b",
+   "expect": [
+    2,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    0,
+    2
+   ],
+   "keys": "5e2b2e",
+   "expect": [
+    1,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    17
+   ],
+   "keys": "2h5G5k",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    0,
+    5
+   ],
+   "keys": "3e5w",
+   "expect": [
+    2,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    1,
+    3
+   ],
+   "keys": "5bb",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    4,
+    16
+   ],
+   "keys": "2wk",
+   "expect": [
+    3,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    8,
+    0
+   ],
+   "keys": "3k$",
+   "expect": [
+    5,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "5l",
+   "expect": [
+    0,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    3,
+    1
+   ],
+   "keys": "$2e",
+   "expect": [
+    5,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    16
+   ],
+   "keys": "2G5lj",
+   "expect": [
+    0,
+    5
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    2,
+    13
+   ],
+   "keys": "5b2w",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    3,
+    4
+   ],
+   "keys": "3b",
+   "expect": [
+    2,
+    44
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    1,
+    11
+   ],
+   "keys": "3jgg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "5l2$",
+   "expect": [
+    1,
+    15
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    3,
+    2
+   ],
+   "keys": "3$k",
+   "expect": [
+    4,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    2,
+    0
+   ],
+   "keys": "2b2G2l",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "k3e",
+   "expect": [
+    0,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "5k3h",
+   "expect": [
+    0,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    1,
+    17
+   ],
+   "keys": "h",
+   "expect": [
+    1,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    6,
+    35
+   ],
+   "keys": "3w",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    8
+   ],
+   "keys": "3j",
+   "expect": [
+    0,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    3,
+    14
+   ],
+   "keys": "5gg",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "3e2b2w",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    3,
+    22
+   ],
+   "keys": "3egg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    2,
+    13
+   ],
+   "keys": "k5$",
+   "expect": [
+    5,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    4,
+    4
+   ],
+   "keys": "k",
+   "expect": [
+    3,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    6,
+    3
+   ],
+   "keys": "3k0j",
+   "expect": [
+    4,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    7,
+    0
+   ],
+   "keys": "3l",
+   "expect": [
+    7,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    3,
+    16
+   ],
+   "keys": "2w2k",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    5,
+    0
+   ],
+   "keys": "w",
+   "expect": [
+    6,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    1,
+    9
+   ],
+   "keys": "2j",
+   "expect": [
+    3,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    1,
+    4
+   ],
+   "keys": "5e3hG",
+   "expect": [
+    6,
+    2
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    5,
+    0
+   ],
+   "keys": "5k2G",
+   "expect": [
+    1,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    28
+   ],
+   "keys": "5G3G5gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    4,
+    25
+   ],
+   "keys": "5$",
+   "expect": [
+    5,
+    42
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    1,
+    24
+   ],
+   "keys": "5k",
+   "expect": [
+    0,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    1,
+    11
+   ],
+   "keys": "5w",
+   "expect": [
+    3,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    4,
+    14
+   ],
+   "keys": "5l5k5$",
+   "expect": [
+    4,
+    18
+   ]
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    0,
+    11
+   ],
+   "keys": "2wl5j",
+   "expect": [
+    4,
+    19
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    4
+   ],
+   "keys": "2b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    26
+   ],
+   "keys": "5wwk",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    1,
+    2
+   ],
+   "keys": "2k",
+   "expect": [
+    0,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    0,
+    3
+   ],
+   "keys": "3$2e5l",
+   "expect": [
+    3,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "0",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    1,
+    22
+   ],
+   "keys": "e3w2gg",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    7
+   ],
+   "keys": "3h$3k",
+   "expect": [
+    0,
+    28
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    5,
+    41
+   ],
+   "keys": "e$",
+   "expect": [
+    5,
+    43
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    2,
+    3
+   ],
+   "keys": "2j",
+   "expect": [
+    4,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    3,
+    11
+   ],
+   "keys": "3w3h",
+   "expect": [
+    3,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    6,
+    1
+   ],
+   "keys": "3$5e5b",
+   "expect": [
+    6,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "<!doctype html>",
+    "<html lang=\"en\">",
+    "  <head>",
+    "    <title>My Page</title>",
+    "  </head>",
+    "  <body>",
+    "    <a href=\"/about\" class=\"nav\">About us</a>",
+    "  </body>",
+    "</html>"
+   ],
+   "start": [
+    3,
+    8
+   ],
+   "keys": "2k5gg2k",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    0,
+    1
+   ],
+   "keys": "5$",
+   "expect": [
+    4,
+    26
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    4,
+    30
+   ],
+   "keys": "5w",
+   "expect": [
+    4,
+    39
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    28
+   ],
+   "keys": "l3gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "5j",
+   "expect": [
+    5,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    0,
+    6
+   ],
+   "keys": "3h",
+   "expect": [
+    0,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    1,
+    0
+   ],
+   "keys": "l5b3l",
+   "expect": [
+    0,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    5,
+    5
+   ],
+   "keys": "3$5Gb",
+   "expect": [
+    3,
+    24
+   ]
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    7,
+    40
+   ],
+   "keys": "5w5e",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "steady practice beats guessing"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "2h5$5e",
+   "expect": [
+    0,
+    29
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    26
+   ],
+   "keys": "5e2j2e",
+   "expect": [
+    0,
+    27
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    2,
+    18
+   ],
+   "keys": "5k",
+   "expect": [
+    0,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    1,
+    4
+   ],
+   "keys": "3gg",
+   "expect": [
+    2,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    4,
+    8
+   ],
+   "keys": "5gg",
+   "expect": [
+    4,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    19
+   ],
+   "keys": "G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    11
+   ],
+   "keys": "2G5b",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    4,
+    23
+   ],
+   "keys": "kw",
+   "expect": [
+    4,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    10
+   ],
+   "keys": "2k3l",
+   "expect": [
+    0,
+    13
+   ]
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    13
+   ],
+   "keys": "5l2k",
+   "expect": [
+    0,
+    18
+   ]
+  },
+  {
+   "lines": [
+    "const config = {",
+    "  host: \"localhost\",",
+    "  port: 3000,",
+    "  debug: false,",
+    "};",
+    "export default config;"
+   ],
+   "start": [
+    2,
+    9
+   ],
+   "keys": "k2l",
+   "expect": [
+    1,
+    11
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    7,
+    15
+   ],
+   "keys": "5el",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    "NAME=${1:-world}",
+    "for i in 1 2 3; do",
+    "  echo \"hello $NAME ($i)\"",
+    "done"
+   ],
+   "start": [
+    2,
+    3
+   ],
+   "keys": "w2bj",
+   "expect": [
+    2,
+    9
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    16
+   ],
+   "keys": "l3l2G",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    0,
+    9
+   ],
+   "keys": "2lej",
+   "expect": [
+    1,
+    14
+   ]
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    5,
+    3
+   ],
+   "keys": "2j2k",
+   "expect": [
+    4,
+    3
+   ]
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    15
+   ],
+   "keys": "b5h3k",
+   "expect": [
+    0,
+    8
+   ]
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    7,
+    10
+   ],
+   "keys": "2j",
+   "expect": [
+    8,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "think in words not characters"
+   ],
+   "start": [
+    0,
+    5
+   ],
+   "keys": "3b3bh",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    3,
+    4
+   ],
+   "keys": "2gge",
+   "expect": [
+    1,
+    6
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    3,
+    0
+   ],
+   "keys": "l3gg3G",
+   "expect": [
+    2,
+    2
+   ]
+  },
+  {
+   "lines": [
+    "calm motions build confidence"
+   ],
+   "start": [
+    0,
+    22
+   ],
+   "keys": "l",
+   "expect": [
+    0,
+    23
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    2,
+    20
+   ],
+   "keys": "5$",
+   "expect": [
+    5,
+    43
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    25
+   ],
+   "keys": "2$5G5gg",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    21
+   ],
+   "keys": "G2w",
+   "expect": [
+    0,
+    16
+   ]
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "keys": "3j",
+   "expect": [
+    0,
+    0
+   ]
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    3,
+    2
+   ],
+   "keys": "5l",
+   "expect": [
+    3,
+    7
+   ]
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    3,
+    9
+   ],
+   "keys": "3l3k",
+   "expect": [
+    0,
+    12
+   ]
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    2,
+    31
+   ],
+   "keys": "b",
+   "expect": [
+    2,
+    30
+   ]
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    7,
+    4
+   ],
+   "keys": "3l",
+   "expect": [
+    7,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    1,
+    9
+   ],
+   "keys": "G2j2gg",
+   "expect": [
+    1,
+    4
+   ]
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    5,
+    38
+   ],
+   "keys": "gg3j3e",
+   "expect": [
+    3,
+    13
+   ]
+  }
+ ],
+ "par": [
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    4
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    20
+   ],
+   "cost": 6
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    5,
+    24
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    0,
+    28
+   ],
+   "cost": 1
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    12
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    0,
+    6
+   ],
+   "cost": 1
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    8,
+    6
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "def average(values):",
+    "    total = 0",
+    "    for v in values:",
+    "        total += v",
+    "    return total / len(value)"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    4,
+    18
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    4
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "fingers rest on the home row"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    0,
+    26
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    5,
+    2
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "focus on one motion at a time"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    0,
+    3
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "def load(path):",
+    "    with open(path) as fh:",
+    "        data = json.load(fh)",
+    "    return data.get(\"items\", [])",
+    "items = load(\"config.json\")",
+    "print(len(items), \"items loaded\")"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    4,
+    20
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    20
+   ],
+   "cost": 6
+  },
+  {
+   "lines": [
+    "import requests",
+    "def fetch(url, timeout=5):",
+    "    resp = requests.get(url, timeout=timeout)",
+    "    resp.raise_for_status()",
+    "    return resp.json()"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    3,
+    22
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "apiVersion: apps/v1",
+    "kind: Deployment",
+    "metadata:",
+    "  name: web",
+    "spec:",
+    "  replicas: 2",
+    "  template:",
+    "    spec:",
+    "      containers: [{image: nginx:1.25}]"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    8,
+    29
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "func handle(w http.ResponseWriter, r *http.Request) {",
+    "    id := r.URL.Query().Get(\"id\")",
+    "    if id == \"\" {",
+    "        http.Error(w, \"missing id\", 400)",
+    "        return",
+    "    }",
+    "    fmt.Fprintf(w, \"hello %s\", id)",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    1,
+    7
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    5,
+    5
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    0,
+    3
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    2,
+    0
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    1,
+    9
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    0
+   ],
+   "cost": 0
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    5,
+    32
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    4,
+    9
+   ],
+   "cost": 3
+  },
+  {
+   "lines": [
+    "for row in table.rows:",
+    "    if row.status == \"done\":",
+    "        total += row.score",
+    "    else:",
+    "        pending.append(row.id)",
+    "print(f\"total={total} left={len(pending)}\")"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    9
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    0
+   ],
+   "cost": 0
+  },
+  {
+   "lines": [
+    "server:",
+    "  host: 0.0.0.0",
+    "  port: 8080",
+    "  workers: 4",
+    "logging:",
+    "  level: info",
+    "  file: /var/log/app.log"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    3,
+    2
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "public class Greeter {",
+    "    private final String name;",
+    "    public Greeter(String name) {",
+    "        this.name = name;",
+    "    }",
+    "    public String greet() {",
+    "        return \"Hello, \" + name + \"!\";",
+    "    }",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    18
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    6,
+    7
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    2
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    ".card {",
+    "  display: flex;",
+    "  padding: 16px 24px;",
+    "  border-radius: 8px;",
+    "  color: #333;",
+    "}",
+    ".card:hover {",
+    "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    0
+   ],
+   "cost": 0
+  },
+  {
+   "lines": [
+    "async function loadUser(id) {",
+    "  const res = await fetch(`/api/users/${id}`);",
+    "  if (!res.ok) throw new Error(\"load failed\");",
+    "  return res.json();",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    7
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "the quick brown fox jumps over the lazy dog",
+    "pack my box with five dozen liquor jugs",
+    "how vexingly quick daft zebras jump",
+    "sphinx of black quartz, judge my vow",
+    "calm motions build lasting muscle memory"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    4,
+    20
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "{",
+    "  \"name\": \"vimgame\",",
+    "  \"version\": \"1.2.0\",",
+    "  \"scripts\": {",
+    "    \"test\": \"pytest -q\",",
+    "    \"start\": \"python3 main.py\"",
+    "  },",
+    "  \"private\": true",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w"
+   ],
+   "target": [
+    2,
+    20
+   ],
+   "cost": 5
+  },
+  {
+   "lines": [
+    "const user = await api.fetch(id);",
+    "if (!user.active) {",
+    "  log.warn(\"inactive user\", user.id);",
+    "  return null;",
+    "}",
+    "return { name: user.name, role: user.role };"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    15
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "#include <vector>",
+    "#include <string>",
+    "std::vector<std::string> split(std::string s) {",
+    "  std::vector<std::string> out;",
+    "  // TODO: handle empty input",
+    "  return out;",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    2,
+    0
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "#include <stdio.h>",
+    "int main(void) {",
+    "    int total = 0;",
+    "    for (int i = 0; i < 10; i++) {",
+    "        total += i;",
+    "    }",
+    "    printf(\"total: %d\\n\", total);",
+    "    return 0;",
+    "}"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    2,
+    9
+   ],
+   "cost": 4
+  },
+  {
+   "lines": [
+    "vim rewards precise movement"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    21
+   ],
+   "cost": 6
+  },
+  {
+   "lines": [
+    "small steps become muscle memory"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "j",
+    "k",
+    "l",
+    "w",
+    "b",
+    "e",
+    "0",
+    "$",
+    "gg",
+    "G"
+   ],
+   "target": [
+    0,
+    24
+   ],
+   "cost": 2
+  },
+  {
+   "lines": [
+    "every keystroke has a cost"
+   ],
+   "start": [
+    0,
+    0
+   ],
+   "allowed": [
+    "h",
+    "l"
+   ],
+   "target": [
+    0,
+    7
+   ],
+   "cost": 2
+  }
+ ],
+ "explain": {
+  "l": "right 1 character",
+  "3h": "left 3 characters",
+  "j": "down 1 line",
+  "4k": "up 4 lines",
+  "w": "forward 1 word",
+  "3w": "forward 3 words",
+  "b": "back 1 word",
+  "e": "to the end of the word",
+  "3e": "to the end of the word 2 ahead",
+  "0": "to the start of the line",
+  "$": "to the end of the line",
+  "4$": "to the end of the line 3 down",
+  "gg": "to the first line",
+  "5gg": "to line 5",
+  "G": "to the last line",
+  "12G": "to line 12"
+ },
+ "keybuffer": [
+  {
+   "keys": "12w0",
+   "tokens": [
+    [
+     12,
+     "w"
+    ],
+    [
+     null,
+     "0"
+    ]
+   ],
+   "error": false,
+   "pending": ""
+  },
+  {
+   "keys": "10l",
+   "tokens": [
+    [
+     10,
+     "l"
+    ]
+   ],
+   "error": false,
+   "pending": ""
+  },
+  {
+   "keys": "3gg",
+   "tokens": [
+    [
+     3,
+     "gg"
+    ]
+   ],
+   "error": false,
+   "pending": ""
+  },
+  {
+   "keys": "gG",
+   "tokens": [],
+   "error": true,
+   "pending": ""
+  },
+  {
+   "keys": "x",
+   "tokens": [],
+   "error": true,
+   "pending": ""
+  },
+  {
+   "keys": "g5",
+   "tokens": [],
+   "error": true,
+   "pending": ""
+  }
+ ],
+ "rate": [
+  [
+   1,
+   1,
+   3
+  ],
+  [
+   1,
+   2,
+   3
+  ],
+  [
+   1,
+   3,
+   3
+  ],
+  [
+   1,
+   4,
+   3
+  ],
+  [
+   2,
+   1,
+   2
+  ],
+  [
+   2,
+   2,
+   3
+  ],
+  [
+   2,
+   3,
+   3
+  ],
+  [
+   2,
+   4,
+   3
+  ],
+  [
+   3,
+   1,
+   2
+  ],
+  [
+   3,
+   2,
+   2
+  ],
+  [
+   3,
+   3,
+   3
+  ],
+  [
+   3,
+   4,
+   3
+  ],
+  [
+   4,
+   1,
+   1
+  ],
+  [
+   4,
+   2,
+   2
+  ],
+  [
+   4,
+   3,
+   2
+  ],
+  [
+   4,
+   4,
+   3
+  ],
+  [
+   5,
+   1,
+   1
+  ],
+  [
+   5,
+   2,
+   1
+  ],
+  [
+   5,
+   3,
+   2
+  ],
+  [
+   5,
+   4,
+   2
+  ],
+  [
+   6,
+   1,
+   1
+  ],
+  [
+   6,
+   2,
+   1
+  ],
+  [
+   6,
+   3,
+   1
+  ],
+  [
+   6,
+   4,
+   2
+  ],
+  [
+   7,
+   1,
+   1
+  ],
+  [
+   7,
+   2,
+   1
+  ],
+  [
+   7,
+   3,
+   1
+  ],
+  [
+   7,
+   4,
+   1
+  ]
+ ]
+}

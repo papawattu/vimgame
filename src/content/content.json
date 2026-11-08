@@ -1,0 +1,824 @@
+{
+  "reference": {
+    "h": "left one character",
+    "j": "down one line (remembers your column)",
+    "k": "up one line (remembers your column)",
+    "l": "right one character",
+    "w": "start of next word",
+    "b": "start of previous word",
+    "e": "end of word (always moves forward)",
+    "0": "start of line",
+    "$": "end of line (2$ = end of next line)",
+    "gg": "first line, or line N with Ngg",
+    "G": "last line, or line N with NG"
+  },
+  "lessons": [
+    {
+      "id": "left_right",
+      "title": "Step 1: Left and Right",
+      "description": "Start with h and l so horizontal movement feels automatic.",
+      "commands": [
+        "h",
+        "l"
+      ]
+    },
+    {
+      "id": "up_down",
+      "title": "Step 2: Up and Down",
+      "description": "Add j and k to move between lines while keeping your column.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l"
+      ]
+    },
+    {
+      "id": "word_forward",
+      "title": "Step 3: Next Word",
+      "description": "Use w to stop crawling and start thinking in words.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l",
+        "w"
+      ]
+    },
+    {
+      "id": "word_back",
+      "title": "Step 4: Previous Word",
+      "description": "Learn b so you can reposition without falling back to arrows.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l",
+        "w",
+        "b"
+      ]
+    },
+    {
+      "id": "word_end",
+      "title": "Step 5: Word Ends",
+      "description": "Add e to land exactly where edits often begin.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l",
+        "w",
+        "b",
+        "e"
+      ]
+    },
+    {
+      "id": "line_edges",
+      "title": "Step 6: Line Edges",
+      "description": "Use 0 and $ to snap to the start or end of a line.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l",
+        "w",
+        "b",
+        "e",
+        "0",
+        "$"
+      ]
+    },
+    {
+      "id": "counts",
+      "title": "Step 7: Counts",
+      "description": "Bundle repeated motions into one command for speed.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l",
+        "w",
+        "b",
+        "e",
+        "0",
+        "$"
+      ]
+    },
+    {
+      "id": "file_jumps",
+      "title": "Step 8: Big Jumps",
+      "description": "Finish with gg and G so you can navigate whole files.",
+      "commands": [
+        "h",
+        "j",
+        "k",
+        "l",
+        "w",
+        "b",
+        "e",
+        "0",
+        "$",
+        "gg",
+        "G"
+      ]
+    }
+  ],
+  "single_lines": [
+    "calm motions build confidence",
+    "small steps become muscle memory",
+    "vim rewards precise movement",
+    "steady practice beats guessing",
+    "focus on one motion at a time",
+    "think in words not characters",
+    "every keystroke has a cost",
+    "fingers rest on the home row"
+  ],
+  "stacked_lines": [
+    [
+      "alpha lane",
+      "bravo lane",
+      "charlie run",
+      "delta path"
+    ],
+    [
+      "north gate",
+      "south gate",
+      "east ridge",
+      "west ridge"
+    ],
+    [
+      "amber note",
+      "bronze note",
+      "copper note",
+      "silver note"
+    ],
+    [
+      "red planet",
+      "blue comet",
+      "green moon",
+      "white star",
+      "black hole"
+    ]
+  ],
+  "sprint_snippets": [
+    [
+      "def load(path):",
+      "    with open(path) as fh:",
+      "        data = json.load(fh)",
+      "    return data.get(\"items\", [])",
+      "items = load(\"config.json\")",
+      "print(len(items), \"items loaded\")"
+    ],
+    [
+      "for row in table.rows:",
+      "    if row.status == \"done\":",
+      "        total += row.score",
+      "    else:",
+      "        pending.append(row.id)",
+      "print(f\"total={total} left={len(pending)}\")"
+    ],
+    [
+      "the quick brown fox jumps over the lazy dog",
+      "pack my box with five dozen liquor jugs",
+      "how vexingly quick daft zebras jump",
+      "sphinx of black quartz, judge my vow",
+      "calm motions build lasting muscle memory"
+    ],
+    [
+      "const user = await api.fetch(id);",
+      "if (!user.active) {",
+      "  log.warn(\"inactive user\", user.id);",
+      "  return null;",
+      "}",
+      "return { name: user.name, role: user.role };"
+    ],
+    [
+      "server:",
+      "  host: 0.0.0.0",
+      "  port: 8080",
+      "  workers: 4",
+      "logging:",
+      "  level: info",
+      "  file: /var/log/app.log"
+    ]
+  ],
+  "languages": [
+    "HTML",
+    "JavaScript",
+    "CSS",
+    "Python",
+    "Java",
+    "Go",
+    "C/C++",
+    "Shell",
+    "YAML",
+    "JSON"
+  ],
+  "scenarios": [
+    {
+      "id": "html_page",
+      "title": "Tidy up a landing page",
+      "language": "HTML",
+      "lines": [
+        "<!doctype html>",
+        "<html lang=\"en\">",
+        "  <head>",
+        "    <title>My Page</title>",
+        "  </head>",
+        "  <body>",
+        "    <a href=\"/about\" class=\"nav\">About us</a>",
+        "  </body>",
+        "</html>"
+      ],
+      "steps": [
+        {
+          "task": "Fix the page title: land on `My`.",
+          "line": 3,
+          "find": "My",
+          "at": "start",
+          "why": "Then `cit` changes everything inside the tag."
+        },
+        {
+          "task": "Change the link target: land on `about` in the href.",
+          "line": 6,
+          "find": "about",
+          "at": "start",
+          "why": "Then `ci\"` swaps the whole URL."
+        },
+        {
+          "task": "Rename the link's class: land on `nav`.",
+          "line": 6,
+          "find": "nav",
+          "at": "start",
+          "why": "Then `ciw` and the new class name."
+        },
+        {
+          "task": "Change the document language: land on `en`.",
+          "line": 1,
+          "find": "en",
+          "at": "start",
+          "why": "Then `ciw` fr."
+        },
+        {
+          "task": "Jump to `html` in the closing tag.",
+          "line": 8,
+          "find": "html",
+          "at": "start",
+          "why": "Then `gg=G` would re-indent the whole page."
+        }
+      ]
+    },
+    {
+      "id": "js_config",
+      "title": "Change the dev server config",
+      "language": "JavaScript",
+      "lines": [
+        "const config = {",
+        "  host: \"localhost\",",
+        "  port: 3000,",
+        "  debug: false,",
+        "};",
+        "export default config;"
+      ],
+      "steps": [
+        {
+          "task": "The port is wrong. Jump to 3000.",
+          "line": 2,
+          "find": "3000",
+          "at": "start",
+          "why": "Then `ciw` 8080 - or 5080 Ctrl-A to add to it."
+        },
+        {
+          "task": "Turn debugging on: land on `false`.",
+          "line": 3,
+          "find": "false",
+          "at": "start",
+          "why": "Then `ciw` true."
+        },
+        {
+          "task": "Change the host: land on `localhost`.",
+          "line": 1,
+          "find": "localhost",
+          "at": "start",
+          "why": "Then `ci\"` replaces everything inside the quotes."
+        },
+        {
+          "task": "Rename the export: land on `config` on the last line.",
+          "line": 5,
+          "find": "config",
+          "at": "start",
+          "why": "Then `ciw` - press * first to find every use."
+        }
+      ]
+    },
+    {
+      "id": "js_fetch",
+      "title": "Harden an async fetch",
+      "language": "JavaScript",
+      "lines": [
+        "async function loadUser(id) {",
+        "  const res = await fetch(`/api/users/${id}`);",
+        "  if (!res.ok) throw new Error(\"load failed\");",
+        "  return res.json();",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Point it at another endpoint: land on `users`.",
+          "line": 1,
+          "find": "users",
+          "at": "start",
+          "why": "Then `ciw` and the new resource name."
+        },
+        {
+          "task": "Improve the error: land on `load` in the message.",
+          "line": 2,
+          "find": "load",
+          "at": "start",
+          "why": "Then `ci\"` rewrites the whole string."
+        },
+        {
+          "task": "Land on the function name `loadUser`.",
+          "line": 0,
+          "find": "loadUser",
+          "at": "start",
+          "why": "Then `*` jumps to its next use."
+        },
+        {
+          "task": "Land on `json` in the return line.",
+          "line": 3,
+          "find": "json",
+          "at": "start",
+          "why": "Then `ciw` text if the API returns plain text."
+        }
+      ]
+    },
+    {
+      "id": "css_card",
+      "title": "Restyle a card component",
+      "language": "CSS",
+      "lines": [
+        ".card {",
+        "  display: flex;",
+        "  padding: 16px 24px;",
+        "  border-radius: 8px;",
+        "  color: #333;",
+        "}",
+        ".card:hover {",
+        "  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Tighten the padding: land on 24px.",
+          "line": 2,
+          "find": "24px",
+          "at": "start",
+          "why": "Then `ciw` - 24px is one word, digits and unit together."
+        },
+        {
+          "task": "Change the colour: land on the # of #333.",
+          "line": 4,
+          "find": "#",
+          "at": "start",
+          "why": "Then `cW` replaces the whole value, # included."
+        },
+        {
+          "task": "Switch the layout: land on `flex`.",
+          "line": 1,
+          "find": "flex",
+          "at": "start",
+          "why": "Then `ciw` grid."
+        },
+        {
+          "task": "Soften the shadow: land on 0.2.",
+          "line": 7,
+          "find": "0.2",
+          "at": "start",
+          "why": "Then `cW` replaces 0.2 in one go."
+        }
+      ]
+    },
+    {
+      "id": "py_typo",
+      "title": "Fix a typo in average()",
+      "language": "Python",
+      "lines": [
+        "def average(values):",
+        "    total = 0",
+        "    for v in values:",
+        "        total += v",
+        "    return total / len(value)"
+      ],
+      "steps": [
+        {
+          "task": "A NameError points at the last line - jump there.",
+          "line": 4,
+          "find": "return",
+          "at": "start",
+          "why": "G lands on the first non-blank, ready to read the line."
+        },
+        {
+          "task": "Land on the misspelt `value` inside len().",
+          "line": 4,
+          "find": "value",
+          "at": "start",
+          "why": "Then `ea` would append the missing s."
+        },
+        {
+          "task": "Check the closing paren at the end of the line.",
+          "line": 4,
+          "find": ")",
+          "at": "start",
+          "why": "Then `i` lets you type just before the paren."
+        },
+        {
+          "task": "Back to the top: land on the function name.",
+          "line": 0,
+          "find": "average",
+          "at": "start",
+          "why": "Then `ciw` would rename it."
+        },
+        {
+          "task": "Now the loop variable `v` on line 3.",
+          "line": 2,
+          "find": "v",
+          "at": "start",
+          "why": "Then `*` would highlight every use of v."
+        }
+      ]
+    },
+    {
+      "id": "py_fetch",
+      "title": "Tune an HTTP helper",
+      "language": "Python",
+      "lines": [
+        "import requests",
+        "def fetch(url, timeout=5):",
+        "    resp = requests.get(url, timeout=timeout)",
+        "    resp.raise_for_status()",
+        "    return resp.json()"
+      ],
+      "steps": [
+        {
+          "task": "Raise the default timeout: land on the 5.",
+          "line": 1,
+          "find": "5",
+          "at": "start",
+          "why": "Then `r9` replaces that one character."
+        },
+        {
+          "task": "Land on `raise_for_status`.",
+          "line": 3,
+          "find": "raise_for_status",
+          "at": "start",
+          "why": "Underscores are word characters, so w treats it as one word."
+        },
+        {
+          "task": "Land on `get` in requests.get.",
+          "line": 2,
+          "find": "get",
+          "at": "start",
+          "why": "The . is its own word - count it when you use w."
+        },
+        {
+          "task": "Go to the import on the first line.",
+          "line": 0,
+          "find": "import",
+          "at": "start",
+          "why": "Then `o` opens a new line below for another import."
+        }
+      ]
+    },
+    {
+      "id": "java_greeter",
+      "title": "Refactor a small class",
+      "language": "Java",
+      "lines": [
+        "public class Greeter {",
+        "    private final String name;",
+        "    public Greeter(String name) {",
+        "        this.name = name;",
+        "    }",
+        "    public String greet() {",
+        "        return \"Hello, \" + name + \"!\";",
+        "    }",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Make the greeting friendlier: land on `Hello`.",
+          "line": 6,
+          "find": "Hello",
+          "at": "start",
+          "why": "Then `ci\"` rewrites the string."
+        },
+        {
+          "task": "This field should be mutable: land on `final`.",
+          "line": 1,
+          "find": "final",
+          "at": "start",
+          "why": "Then `dw` deletes the word and the space after it."
+        },
+        {
+          "task": "Rename the method: land on `greet`.",
+          "line": 5,
+          "find": "greet",
+          "at": "start",
+          "why": "Then `ciw` - and remember to update its callers."
+        },
+        {
+          "task": "Go to the class name on line 1.",
+          "line": 0,
+          "find": "Greeter",
+          "at": "start",
+          "why": "Then `ciw` renames the class - and the file name must match!"
+        }
+      ]
+    },
+    {
+      "id": "go_handler",
+      "title": "Tidy an HTTP handler",
+      "language": "Go",
+      "lines": [
+        "func handle(w http.ResponseWriter, r *http.Request) {",
+        "    id := r.URL.Query().Get(\"id\")",
+        "    if id == \"\" {",
+        "        http.Error(w, \"missing id\", 400)",
+        "        return",
+        "    }",
+        "    fmt.Fprintf(w, \"hello %s\", id)",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Replace the magic number: land on 400.",
+          "line": 3,
+          "find": "400",
+          "at": "start",
+          "why": "Then `ciw` http.StatusBadRequest."
+        },
+        {
+          "task": "Improve the error text: land on `missing`.",
+          "line": 3,
+          "find": "missing",
+          "at": "start",
+          "why": "Then `ci\"` rewrites the whole message."
+        },
+        {
+          "task": "Rename the handler: land on `handle`.",
+          "line": 0,
+          "find": "handle",
+          "at": "start",
+          "why": "Then `ciw` - punctuation like ( is its own word for w."
+        },
+        {
+          "task": "Check the greeting: land on `hello`.",
+          "line": 6,
+          "find": "hello",
+          "at": "start",
+          "why": "Then `ci\"` changes the greeting text."
+        },
+        {
+          "task": "Go to the closing brace at the very end.",
+          "line": 7,
+          "find": "}",
+          "at": "start",
+          "why": "Then `o` opens a new line below for the next function."
+        }
+      ]
+    },
+    {
+      "id": "c_loop",
+      "title": "Fix an off-by-one in C",
+      "language": "C/C++",
+      "lines": [
+        "#include <stdio.h>",
+        "int main(void) {",
+        "    int total = 0;",
+        "    for (int i = 0; i < 10; i++) {",
+        "        total += i;",
+        "    }",
+        "    printf(\"total: %d\\n\", total);",
+        "    return 0;",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Off by one? Land on the loop bound 10.",
+          "line": 3,
+          "find": "10",
+          "at": "start",
+          "why": "Then `ciw` 11 - or Ctrl-A to increment it."
+        },
+        {
+          "task": "Land on `stdio` in the include.",
+          "line": 0,
+          "find": "stdio",
+          "at": "start",
+          "why": "< is punctuation, so it counts as its own word for w."
+        },
+        {
+          "task": "Change the format: land on `total` inside the quotes.",
+          "line": 6,
+          "find": "total",
+          "at": "start",
+          "why": "Then `ci\"` rewrites the whole format string."
+        },
+        {
+          "task": "Land on the 0 in `return 0`.",
+          "line": 7,
+          "find": "0",
+          "at": "start",
+          "why": "Then `r1` makes it return an error code."
+        }
+      ]
+    },
+    {
+      "id": "cpp_split",
+      "title": "Finish a C++ helper",
+      "language": "C/C++",
+      "lines": [
+        "#include <vector>",
+        "#include <string>",
+        "std::vector<std::string> split(std::string s) {",
+        "  std::vector<std::string> out;",
+        "  // TODO: handle empty input",
+        "  return out;",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Find the TODO and land on it.",
+          "line": 4,
+          "find": "TODO",
+          "at": "start",
+          "why": "Then `cc` replaces the whole comment line."
+        },
+        {
+          "task": "Land on `split`, the function name.",
+          "line": 2,
+          "find": "split",
+          "at": "start",
+          "why": "Then `ciw` to rename it."
+        },
+        {
+          "task": "Land on `out` in the return line.",
+          "line": 5,
+          "find": "out",
+          "at": "start",
+          "why": "Then `*` highlights every use."
+        },
+        {
+          "task": "Back to the first include: land on `vector`.",
+          "line": 0,
+          "find": "vector",
+          "at": "start",
+          "why": "# and < are punctuation, so each run of them is a word for w."
+        }
+      ]
+    },
+    {
+      "id": "sh_script",
+      "title": "Edit a shell script",
+      "language": "Shell",
+      "lines": [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        "NAME=${1:-world}",
+        "for i in 1 2 3; do",
+        "  echo \"hello $NAME ($i)\"",
+        "done"
+      ],
+      "steps": [
+        {
+          "task": "Change the default name: land on `world`.",
+          "line": 2,
+          "find": "world",
+          "at": "start",
+          "why": "Then `ciw` and the new default."
+        },
+        {
+          "task": "Loop more times: land on the 3.",
+          "line": 3,
+          "find": "3",
+          "at": "start",
+          "why": "Then `a 4 5` appends more values after it."
+        },
+        {
+          "task": "Land on `echo` to swap it for printf.",
+          "line": 4,
+          "find": "echo",
+          "at": "start",
+          "why": "Then `cw` printf."
+        },
+        {
+          "task": "Check the shell options: land on the end of `pipefail`.",
+          "line": 1,
+          "find": "pipefail",
+          "at": "end",
+          "why": "Then `a` appends another option after pipefail."
+        }
+      ]
+    },
+    {
+      "id": "k8s_deploy",
+      "title": "Scale up a Deployment",
+      "language": "YAML",
+      "lines": [
+        "apiVersion: apps/v1",
+        "kind: Deployment",
+        "metadata:",
+        "  name: web",
+        "spec:",
+        "  replicas: 2",
+        "  template:",
+        "    spec:",
+        "      containers: [{image: nginx:1.25}]"
+      ],
+      "steps": [
+        {
+          "task": "Scale up: land on the replica count.",
+          "line": 5,
+          "find": "2",
+          "at": "start",
+          "why": "Then `4` Ctrl-A bumps it from 2 to 6."
+        },
+        {
+          "task": "Bump the image tag: land on 1.25.",
+          "line": 8,
+          "find": "1.25",
+          "at": "start",
+          "why": "Then `cW` swaps the whole tag in one go."
+        },
+        {
+          "task": "Rename the app: land on `web`.",
+          "line": 3,
+          "find": "web",
+          "at": "start",
+          "why": "Then `ciw` and the new name."
+        },
+        {
+          "task": "Check the kind: land on the end of `Deployment`.",
+          "line": 1,
+          "find": "Deployment",
+          "at": "end",
+          "why": "Then `ciw` StatefulSet if it needs stable storage."
+        }
+      ]
+    },
+    {
+      "id": "json_package",
+      "title": "Update a package manifest",
+      "language": "JSON",
+      "lines": [
+        "{",
+        "  \"name\": \"vimgame\",",
+        "  \"version\": \"1.2.0\",",
+        "  \"scripts\": {",
+        "    \"test\": \"pytest -q\",",
+        "    \"start\": \"python3 main.py\"",
+        "  },",
+        "  \"private\": true",
+        "}"
+      ],
+      "steps": [
+        {
+          "task": "Bump the minor version: land on the 2 in 1.2.0.",
+          "line": 2,
+          "find": "2",
+          "at": "start",
+          "why": "Then `r3` makes it 1.3.0."
+        },
+        {
+          "task": "Make the tests verbose: land on the q in -q.",
+          "line": 4,
+          "find": "q",
+          "at": "start",
+          "why": "Then `rv` turns -q into -v."
+        },
+        {
+          "task": "Publish it: land on `true`.",
+          "line": 7,
+          "find": "true",
+          "at": "start",
+          "why": "Then `ciw` false."
+        },
+        {
+          "task": "Rename the package: land on `vimgame`.",
+          "line": 1,
+          "find": "vimgame",
+          "at": "start",
+          "why": "Then `ci\"` replaces the whole name."
+        },
+        {
+          "task": "Change the entry point: land on `main`.",
+          "line": 5,
+          "find": "main",
+          "at": "start",
+          "why": "Then `ciw` app - the .py stays put."
+        }
+      ]
+    }
+  ]
+}

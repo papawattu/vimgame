@@ -291,3 +291,30 @@ def test_xp_and_survival_best_persist(tmp_path, monkeypatch):
     reloaded = load_progress()
     assert reloaded["xp"]["level"] == 3
     assert reloaded["survival_best"] == {"score": 400, "level": 4}
+
+
+# ---- shared cases (also run by the web version's node tests) -------------
+
+import json  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+SHARED = json.loads((Path(__file__).parent / "shared" / "cases.json").read_text())
+
+
+def test_shared_motion_cases():
+    for case in SHARED["motions"]:
+        end = execute_motion(case["lines"], Position(*case["start"]), case["keys"])
+        assert [end.line, end.col] == case["expect"], case
+
+
+def test_shared_par_cases():
+    for case in SHARED["par"]:
+        found = solve(case["lines"], Cursor.at(Position(*case["start"])), tuple(case["allowed"]))
+        assert found[Position(*case["target"])][0] == case["cost"], case
+
+
+def test_shared_explain_and_rate_cases():
+    for label, text in SHARED["explain"].items():
+        assert explain_command(label) == text
+    for keys, par_, stars in SHARED["rate"]:
+        assert rate(keys, par_) == stars
