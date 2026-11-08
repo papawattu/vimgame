@@ -21,6 +21,11 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable
 
+from src.core.exceptions import GameOver, GameWon
+from src.core.game_engine import GameConfig, GameEngine
+from src.player.exp import PlayerExperience
+from src.player.state import PlayerState
+
 
 PROGRESS_PATH = Path.home() / ".vim_motion_trainer_progress.json"
 CHALLENGES_PER_ROUND = 8
@@ -951,6 +956,63 @@ def explain_command(label: str) -> str:
     return phrases[motion]
 
 
+# --------------------------------------------------------------------------
+# Survival mode: levels of timed targets, driven by the src GameEngine
+# --------------------------------------------------------------------------
+
+XP_PER_STAR = 5
+SURVIVAL_START_SCORE = 50
+SURVIVAL_CONFIG = {
+    "base_difficulty": "1",
+    "max_difficulty": "5",
+    "points_correct": 25,
+    "points_wrong": -15,
+    "xp_correct": 10,
+}
+
+
+@dataclass(frozen=True)
+class SurvivalTarget:
+    lines: tuple[str, ...]
+    pos: Position
+
+
+def survival_sequence(count: int, rng: random.Random | None = None, allowed=MOTIONS) -> list[SurvivalTarget]:
+    """One level's targets: `count` non-blank cells in a single buffer, never the same twice in a row.
+
+    Only cells reachable from the buffer's start with `allowed` are used. For the motion sets the
+    lessons unlock, reachability is symmetric, so every target is reachable from every other.
+    """
+    rng = rng or random
+    buffers = SPRINT_SNIPPETS + [scenario.lines for scenario in SCENARIOS]
+    while True:
+        lines = tuple(rng.choice(buffers))
+        previous = scenario_start(list(lines))
+        reachable = solve(list(lines), Cursor.at(previous), allowed)
+        cells = sorted((pos for pos in reachable if not lines[pos.line][pos.col].isspace()),
+                       key=lambda pos: (pos.line, pos.col))
+        if len(cells) >= 5:
+            break
+    targets: list[SurvivalTarget] = []
+    while len(targets) < count:
+        pos = rng.choice(cells)
+        if pos != previous:
+            targets.append(SurvivalTarget(lines, pos))
+            previous = pos
+    return targets
+
+
+def make_survival_engine(
+    rng: random.Random | None = None, exp: PlayerExperience | None = None, allowed=MOTIONS
+) -> GameEngine:
+    return GameEngine(
+        PlayerState(score=SURVIVAL_START_SCORE),
+        exp or PlayerExperience(),
+        GameConfig(SURVIVAL_CONFIG),
+        sequence_factory=lambda count: survival_sequence(count, rng, allowed),
+    )
+
+
 def sprint_motions(progress: dict) -> tuple[str, ...]:
     unlocked = [lesson for lesson in LESSONS if lesson.lesson_id in progress["unlocked_lessons"]]
     return unlocked[-1].commands if unlocked else LESSONS[0].commands
@@ -991,6 +1053,8 @@ def default_progress() -> dict:
         "lessons": {lesson.lesson_id: empty_lesson_stats() for lesson in LESSONS},
         "sprint_best": 0,
         "scenarios": {},  # scenario_id -> best stars
+        "xp": {"experience": 0, "level": 1, "experience_to_next_level": 100},
+        "survival_best": {"score": 0, "level": 0},
     }
 
 
@@ -1008,6 +1072,13 @@ def load_progress() -> dict:
     unlocked = [lid for lid in data.get("unlocked_lessons", []) if lid in LESSON_INDEX]
     progress["unlocked_lessons"] = list(dict.fromkeys([LESSONS[0].lesson_id, *unlocked]))
     progress["sprint_best"] = int(data.get("sprint_best", 0))
+    for section in ("xp", "survival_best"):
+        saved = data.get(section, {})
+        for key, default in progress[section].items():
+            try:
+                progress[section][key] = int(saved.get(key, default))
+            except (TypeError, ValueError):
+                pass
     progress["scenarios"] = {
         sid: int(best) for sid, best in data.get("scenarios", {}).items() if sid in SCENARIO_INDEX
     }
@@ -1198,11 +1269,28 @@ class App:
     def __init__(self, scr) -> None:
         self.ui = Screen(scr)
         self.progress = load_progress()
+        self.exp = PlayerExperience(**self.progress["xp"])
 
     # ---- generic screens -------------------------------------------------
 
     def header_right(self) -> str:
-        return f"★ {self.progress['overall'].get('stars', 0)}   sprint best {self.progress['sprint_best']}"
+        return (f"Lv {self.exp.level}  {self.exp.experience}/{self.exp.experience_to_next_level} xp   "
+                f"★ {self.progress['overall'].get('stars', 0)}")
+
+    def sync_xp(self) -> None:
+        self.progress["xp"] = {
+            "experience": self.exp.experience,
+            "level": self.exp.level,
+            "experience_to_next_level": self.exp.experience_to_next_level,
+        }
+
+    def award_xp(self, amount: int) -> str | None:
+        """Add XP to the persistent player level. Returns a level-up message, if any."""
+        before = self.exp.level
+        self.exp.add_experience(amount)
+        self.sync_xp()
+        save_progress(self.progress)
+        return f"Level up! You're now level {self.exp.level}." if self.exp.level > before else None
 
     def menu(self, title: str, intro: list[str], items: list[tuple[str, str]], back_key: str | None = None) -> str | None:
         index = 0
@@ -1270,6 +1358,7 @@ class App:
                     ("o", "Choose lesson"),
                     ("t", f"Quick learn   {QUICK_LEARN_SECONDS // 60} minutes on your weak spots"),
                     ("w", "Real-world    edit real code with a coach"),
+                    ("v", "Survival      timed levels that speed up as you improve"),
                     ("s", f"Sprint        {SPRINT_SECONDS}s time attack"),
                     ("p", "Progress"),
                     ("r", "Motion reference"),
@@ -1284,6 +1373,8 @@ class App:
                 self.choose_lesson()
             elif choice == "t":
                 self.quick_learn()
+            elif choice == "v":
+                self.survival()
             elif choice == "w":
                 self.real_world()
             elif choice == "s":
@@ -1295,6 +1386,7 @@ class App:
             elif choice == "x":
                 if self.confirm("Reset", "Reset all saved progress, stars and sprint best? [y/N]"):
                     self.progress = default_progress()
+                    self.exp = PlayerExperience(**self.progress["xp"])
                     save_progress(self.progress)
             elif choice == "q":
                 return
@@ -1469,11 +1561,14 @@ class App:
             if newly:
                 unlocked.append(newly)
             save_progress(self.progress)
+            level_up = self.award_xp(stars * XP_PER_STAR)
             round_stars += stars
             played += 1
             perfect += hit_par
 
-            if not self.show_feedback(lesson.title, info, challenge, result, par, optimal, stars, newly):
+            news = [f"Unlocked: {newly}!"] if newly else []
+            news += [level_up] if level_up else []
+            if not self.show_feedback(lesson.title, info, challenge, result, par, optimal, stars, news):
                 break
 
         if played:
@@ -1488,16 +1583,15 @@ class App:
                 lines += [("", 0), (f"Unlocked: {title}", "good")]
             self.notice("Round summary", lines)
 
-    def show_feedback(self, title, info, challenge, result, par, optimal, stars, unlocked) -> bool:
+    def show_feedback(self, title, info, challenge, result, par, optimal, stars, news) -> bool:
         """Show how the attempt went. Returns False if the player wants to stop."""
         if result.keys <= par:
             headline, style = f"{stars_text(stars)}  Par! {result.keys} key{'s' * (result.keys != 1)} in {result.elapsed:.1f}s", "good"
         else:
             headline, style = f"{stars_text(stars)}  Reached in {result.keys} keys - par is {par}", "warn"
-        detail = [f"you:     {' '.join(result.commands)}", f"optimal: {optimal}"]
-        if unlocked:
-            detail.append(f"Unlocked: {unlocked}!")
-        auto = result.keys <= par and not unlocked
+        detail = [(f"you:     {' '.join(result.commands)}", "dim"), (f"optimal: {optimal}", "dim")]
+        detail += [(line, "good") for line in news]
+        auto = result.keys <= par and not news
 
         while True:
             if self.ui.begin():
@@ -1505,8 +1599,8 @@ class App:
                 bottom = self.ui.draw_buffer(3, challenge.lines, result.cursor.pos, None)
                 self.ui.rule(bottom + 1)
                 self.ui.put(bottom + 2, 2, headline, style)
-                for row, line in enumerate(detail):
-                    self.ui.put(bottom + 3 + row, 2, line, "good" if line.startswith("Unlocked") else "dim")
+                for row, (line, style) in enumerate(detail):
+                    self.ui.put(bottom + 3 + row, 2, line, style)
                 self.ui.footer("any key: next target · q: menu")
                 self.ui.scr.refresh()
             key = self.ui.key(900 if auto else -1)
@@ -1574,6 +1668,9 @@ class App:
             pars += result.keys <= par
             verdict = "par!" if result.keys <= par else f"{result.keys} keys, par {par} ({optimal})."
             message = (f"{stars_text(stars)} {verdict}  {step.why}", "good" if stars == 3 else "warn")
+            level_up = self.award_xp(stars * XP_PER_STAR)
+            if level_up:
+                message = (f"{level_up}  {message[0]}", "good")
 
         best = self.progress["scenarios"].get(scenario.scenario_id)
         record = best is None or total > best
@@ -1641,6 +1738,9 @@ class App:
                 message = (f"{stars_text(stars)}  par!", "good")
             else:
                 message = (f"{stars_text(stars)}  {result.keys} keys, par {par} - optimal: {optimal}", "warn")
+            level_up = self.award_xp(stars * XP_PER_STAR)
+            if level_up:
+                message = (f"{level_up}  {message[0]}", "good")
 
         if not tally:
             return
@@ -1655,6 +1755,105 @@ class App:
         time.sleep(0.3)
         curses.flushinp()
         self.notice("Quick learn complete", lines)
+
+    def survival(self) -> None:
+        """Timed levels run by the src GameEngine: it owns the target sequence, score, XP and difficulty."""
+        best = self.progress["survival_best"]
+        intro = self.notice("Survival", [
+            ("Clear each level's targets before the clock runs out.", "accent"),
+            ("", 0),
+            (f"Start with {SURVIVAL_START_SCORE} points. Each target +{SURVIVAL_CONFIG['points_correct']}, "
+             f"each timeout {SURVIVAL_CONFIG['points_wrong']}.", 0),
+            ("Hit 0 and it's game over. Reach 1000 to win.", 0),
+            ("Fast, efficient moves raise the difficulty: more targets", 0),
+            ("per level and less time per target. Slow ones ease it off.", 0),
+            ("Motions: " + " ".join(sprint_motions(self.progress)), 0),
+            ("", 0),
+            (f"Best: {best['score']} points, level {best['level']}", "warn"),
+        ], "any key to start · q back")
+        if intro == "q":
+            return
+
+        allowed = sprint_motions(self.progress)
+        engine = make_survival_engine(exp=self.exp, allowed=allowed)
+        engine.start()
+        lines: list[str] = []
+        cursor = Cursor.at(Position(0, 0))
+        message: tuple[str, str] = ("Go!", "good")
+        cleared, ending = 0, "quit"
+        levels_before = self.exp.level
+
+        try:
+            while True:
+                target: SurvivalTarget = engine.current
+                if list(target.lines) != lines:
+                    lines = list(target.lines)
+                    cursor = Cursor.at(scenario_start(lines))
+                limit = engine.difficulty["time_limit"]
+                deadline = time.monotonic() + limit
+                par, optimal = solve(lines, cursor, allowed)[target.pos]
+                level, left_in_level = engine.state.current_level, len(engine.state.sequence)
+
+                def info() -> str:
+                    left = max(0.0, deadline - time.monotonic())
+                    return (f"level {level} · {left_in_level} left · diff {engine.progression.current_difficulty}"
+                            f"   {engine.player_state.score} pts   {left:4.1f}s")
+
+                result = self.play_target("Survival", info, lines, cursor, target.pos, allowed, par,
+                                          f"Reach the target within {limit}s!", message=message, deadline=deadline)
+                if result.status == "quit":
+                    break
+                cursor = result.cursor
+                if result.status == "timeout":
+                    engine.track_performance(float(limit), 0.0)
+                    engine.update_game_state("timeout")
+                    message = (f"Too slow! {SURVIVAL_CONFIG['points_wrong']}  optimal was: {optimal}", "bad")
+                    continue
+                efficiency = min(1.0, par / result.keys)
+                engine.track_performance(max(result.elapsed, 0.01), efficiency)
+                status = engine.update_game_state(target)
+                cleared += 1
+                stars = rate(result.keys, par)
+                if status == "level_complete":
+                    message = (f"Level {level} cleared! Next: {len(engine.state.sequence)} targets, "
+                               f"{engine.difficulty['time_limit']}s each", "accent")
+                else:
+                    message = (f"{stars_text(stars)} +{SURVIVAL_CONFIG['points_correct']}"
+                               + ("  par!" if result.keys <= par else f"  optimal was: {optimal}"),
+                               "good" if stars == 3 else "warn")
+        except GameOver:
+            ending = "over"
+        except GameWon:
+            ending = "won"
+
+        score, level = engine.player_state.score, engine.state.current_level
+        record = score > best["score"]
+        if record:
+            self.progress["survival_best"] = {"score": max(score, 0), "level": level}
+        self.sync_xp()
+        save_progress(self.progress)
+
+        headline = {
+            "over": ("Game over - your score hit zero.", "bad"),
+            "won": ("You won! 1000 points - a true motion master.", "good"),
+            "quit": ("Run ended.", "accent"),
+        }[ending]
+        lines_out: list[tuple[str, str | int]] = [
+            headline,
+            ("", 0),
+            (f"Score       {max(score, 0)}", "warn"),
+            (f"Level       {level}   (difficulty {engine.progression.current_difficulty})", 0),
+            (f"Targets     {cleared}", 0),
+            (f"Best        {self.progress['survival_best']['score']} points, level "
+             f"{self.progress['survival_best']['level']}", 0),
+        ]
+        if record and score > 0:
+            lines_out += [("", 0), ("New personal best!", "good")]
+        if self.exp.level > levels_before:
+            lines_out += [(f"Level up! You're now level {self.exp.level}.", "good")]
+        time.sleep(0.3)
+        curses.flushinp()
+        self.notice("Survival", lines_out)
 
     def sprint(self) -> None:
         allowed = sprint_motions(self.progress)
@@ -1707,6 +1906,9 @@ class App:
             else:
                 combo = 1
                 message = (f"{stars_text(stars)} +{points}  optimal was: {optimal}", "warn")
+            level_up = self.award_xp(stars * XP_PER_STAR)
+            if level_up:
+                message = (f"{level_up}  {message[0]}", "good")
 
         record = score > self.progress["sprint_best"]
         if record:
@@ -1732,7 +1934,11 @@ class App:
         lines: list[tuple[str, str | int]] = [
             (f"Overall par rate {accuracy(overall) * 100:5.1f}%   targets {overall['attempts']}   "
              f"avg {average_time(overall):.1f}s   ★ {overall.get('stars', 0)}", "accent"),
-            (f"Best streak {overall['best_streak']}   sprint best {self.progress['sprint_best']}", 0),
+            (f"Best streak {overall['best_streak']}   sprint best {self.progress['sprint_best']}   "
+             f"survival best {self.progress['survival_best']['score']} "
+             f"(level {self.progress['survival_best']['level']})", 0),
+            (f"Player level {self.exp.level}   {self.exp.experience}/{self.exp.experience_to_next_level} xp to next",
+             "warn"),
             ("", 0),
         ]
         for lesson in LESSONS:

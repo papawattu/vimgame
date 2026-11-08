@@ -1,10 +1,15 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
 
 @dataclass
 class PlayerState:
     score: int = 0
     accuracy: float = 1.0
     time: float = 0.0
+    level: int = field(init=False, default=0)
+
+    def __post_init__(self) -> None:
+        self.level = self.score // 100
 
     def update_score(self, points: int) -> None:
         self.score += points

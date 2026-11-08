@@ -229,3 +229,65 @@ def test_explain_command():
     assert explain_command("4$") == "to the end of the line 3 down"
     assert explain_command("gg") == "to the first line"
     assert explain_command("12G") == "to line 12"
+
+
+# ---- Survival mode (driven by src GameEngine) and XP -----------------------
+
+import random  # noqa: E402
+
+from vim_motion_trainer import (  # noqa: E402
+    SurvivalTarget,
+    load_progress,
+    make_survival_engine,
+    save_progress,
+    survival_sequence,
+)
+import vim_motion_trainer  # noqa: E402
+
+
+def test_survival_sequence_targets_text_in_one_buffer_without_repeats():
+    rng = random.Random(3)
+    for count in (3, 7, 15):
+        batch = survival_sequence(count, rng, MOTIONS)
+        assert len(batch) == count
+        assert len({t.lines for t in batch}) == 1
+        lines = list(batch[0].lines)
+        previous = scenario_start(lines)
+        for target in batch:
+            assert not lines[target.pos.line][target.pos.col].isspace()
+            assert target.pos != previous
+            previous = target.pos
+
+
+@pytest.mark.parametrize("allowed", [("h", "l"), ("h", "j", "k", "l"), MOTIONS])
+def test_survival_targets_are_reachable_with_only_the_unlocked_motions(allowed):
+    rng = random.Random(7)
+    for _ in range(8):
+        batch = survival_sequence(5, rng, allowed)
+        lines = list(batch[0].lines)
+        cursor = Cursor.at(scenario_start(lines))
+        for target in batch:
+            assert target.pos in solve(lines, cursor, allowed)
+            cursor = Cursor.at(target.pos)
+
+
+def test_survival_engine_plays_real_targets():
+    engine = make_survival_engine(random.Random(1))
+    engine.start()
+    assert isinstance(engine.current, SurvivalTarget)
+    assert len(engine.state.sequence) == engine.difficulty["moves"]
+    first = engine.current
+    assert engine.update_game_state(first) == "correct"
+    assert engine.current is not first
+
+
+def test_xp_and_survival_best_persist(tmp_path, monkeypatch):
+    monkeypatch.setattr(vim_motion_trainer, "PROGRESS_PATH", tmp_path / "progress.json")
+    progress = load_progress()
+    assert progress["xp"] == {"experience": 0, "level": 1, "experience_to_next_level": 100}
+    progress["xp"] = {"experience": 40, "level": 3, "experience_to_next_level": 225}
+    progress["survival_best"] = {"score": 400, "level": 4}
+    save_progress(progress)
+    reloaded = load_progress()
+    assert reloaded["xp"]["level"] == 3
+    assert reloaded["survival_best"] == {"score": 400, "level": 4}
