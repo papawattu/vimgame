@@ -5,6 +5,8 @@ immediately, just like in Vim. Reach the green target in as few keystrokes as
 you can: a solver works out the optimal ("par") keystroke count for every target,
 and matching it earns three stars.
 
+**Play it in your browser: https://papawattu.github.io/vimgame/**
+
 ## Run it
 
 ```bash
